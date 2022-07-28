@@ -16,6 +16,6 @@
 
 - [x] Create a new repository on GitHub and make it public
 - [x] Init new package with `npm init` or with yarn
-- [ ] Add basic project setup with [React](https://reactjs.org/) and build it with [Parcel](https://parceljs.org/). Here is a bit of information how to make it with Parcel [link](https://parceljs.org/recipes/react/)
-- [ ] Render blank page (with Hello World message)
-- [ ] Push changes to `master` branch and to remote repository on GitHub
+- [x] Add basic project setup with [React](https://reactjs.org/) and build it with [Parcel](https://parceljs.org/). Here is a bit of information how to make it with Parcel [link](https://parceljs.org/recipes/react/)
+- [x] Render blank page (with Hello World message)
+- [x] Push changes to `main` branch and to remote repository on GitHub
