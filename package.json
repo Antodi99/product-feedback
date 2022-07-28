@@ -1,6 +1,7 @@
 {
   "name": "product-feedback",
   "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "version": "1.0.0",
   "private": true,
   "description": "Product Feedback App",
@@ -17,10 +18,11 @@
     "start": "parcel",
     "build": "parcel build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-
+    "lint:fix": "eslint . --fix",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
+    "@parcel/transformer-typescript-tsc": "^2.6.2",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "react": "^18.2.0",
