@@ -3,7 +3,7 @@
   "source": "src/index.html",
   "version": "1.0.0",
   "private": true,
-  "description": "- [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6). \r - [Live demo](https://fem-product-feedback-app.vercel.app/)",
+  "description": "Product Feedback App",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Antodi99/product-feedback.git"
@@ -19,34 +19,10 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "parcel": "^2.6.2",
-    "process": "^0.11.10"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "parcel": "^2.6.2"
   },
   "homepage": "https://github.com/Antodi99/product-feedback#readme"
 }
