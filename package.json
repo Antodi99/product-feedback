@@ -42,7 +42,7 @@
     "type": "git",
     "url": "git+https://github.com/Antodi99/product-feedback.git"
   },
-  "author": "",
+  "author": "Anton Rubchenko",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Antodi99/product-feedback/issues"
