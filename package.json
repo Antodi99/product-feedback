@@ -1,10 +1,10 @@
 {
   "name": "product-feedback",
   "source": "src/index.html",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
   "version": "1.0.0",
   "private": true,
   "description": "Product Feedback App",
+  "homepage": "https://github.com/Antodi99/product-feedback#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Antodi99/product-feedback.git"
@@ -22,23 +22,27 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@parcel/transformer-typescript-tsc": "^2.6.2",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwindcss": "^3.1.6"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@parcel/transformer-typescript-tsc": "^2.6.2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.31.0",
     "@typescript-eslint/parser": "^5.31.0",
     "eslint": "^8.20.0",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "parcel": "^2.6.2"
+    "parcel": "^2.6.2",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.1.6",
+    "typescript": "^4.7.4"
   },
-  "homepage": "https://github.com/Antodi99/product-feedback#readme"
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }

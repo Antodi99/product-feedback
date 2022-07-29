@@ -1,0 +1,1 @@
+export { SomeTestComponent } from './SomeTestComponent'
