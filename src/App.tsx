@@ -1,7 +1,17 @@
-function App () {
+import Carddesktop from './components/CardDesktop'
+import { useMediaQuery } from 'react-responsive'
+import Cardmobile from './components/CardMobile'
+
+const App = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 786px)'
+  })
+
   return (
-    <div className='App'>
-      <p className='bg-zinc-600 text-white'>Hello World!</p>
+    <div className="App">
+      {
+        isMobile ? <Cardmobile /> : <Carddesktop />
+      }
     </div>
   )
 }
