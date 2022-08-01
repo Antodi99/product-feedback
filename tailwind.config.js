@@ -7,10 +7,10 @@ module.exports = {
         'light-grey-hov': '#d1d9ff',
         'dark-grey': '#a6abba',
         'light-blue': '#5969c5',
-        'dark-blue': '#4f537c'
-      }
-    }
+        'dark-blue': '#4f537c',
+      },
+    },
   },
   variants: {},
-  plugins: []
+  plugins: [],
 }

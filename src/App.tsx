@@ -4,15 +4,11 @@ import Cardmobile from './components/CardMobile'
 
 const App = () => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 786px)'
+    query: '(max-width: 786px)',
   })
 
   return (
-    <div className="App">
-      {
-        isMobile ? <Cardmobile /> : <Carddesktop />
-      }
-    </div>
+    <div className='App'>{isMobile ? <Cardmobile /> : <Carddesktop />}</div>
   )
 }
 
