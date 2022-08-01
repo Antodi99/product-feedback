@@ -1,14 +1,11 @@
-import Carddesktop from './components/CardDesktop'
-import { useMediaQuery } from 'react-responsive'
-import Cardmobile from './components/CardMobile'
+import { Card } from './components'
 
 const App = () => {
-  const isMobile = useMediaQuery({
-    query: '(max-width: 786px)',
-  })
-
   return (
-    <div className='App'>{isMobile ? <Cardmobile /> : <Carddesktop />}</div>
+    <div className='App'>
+      <Card />
+      <Card />
+    </div>
   )
 }
 
