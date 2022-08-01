@@ -9,6 +9,9 @@ module.exports = {
         'light-blue': '#5969c5',
         'dark-blue': '#4f537c',
       },
+      backgroundImage: {
+        'background-header': 'url("./assets/images/suggestions/desktop/background-header.png")'
+      }
     },
   },
   variants: {},
