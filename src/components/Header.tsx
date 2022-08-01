@@ -28,16 +28,25 @@ function Header() {
           </div>
           <ul className='mt-5 list-disc'>
             <li className='flex justify-between'>
-              <p className='text-dark-blue'>Planned</p>
+            <div className='flex items-center'>
+                <div className='rounded-xl w-2.5 h-2.5 bg-amber-500'></div>
+              <p className='text-dark-blue ml-3 '>Planned</p>
+              </div>
               <p className='text-neutral-600 font-bold mr-2'>2</p>
             </li>
-            <li className='flex justify-between'>
-              <p className='text-dark-blue'>in-Progress</p>
+            <li className='flex justify-between mt-3'>
+              <div className='flex items-center'>
+                <div className='rounded-xl w-2.5 h-2.5 bg-purple-600'></div>
+                <p className='text-dark-blue ml-3'>In-Progress</p>
+              </div>
               <p className='text-neutral-600 font-bold mr-2'>3</p>
             </li>
-            <li className='flex justify-between'>
-              <p className='text-dark-blue'>Live</p>
-              <p className='text-neutral-600 font-bold mr-2'>1</p>
+            <li className='flex justify-between mt-3'>
+            <div className='flex items-center'>
+                <div className='rounded-xl w-2.5 h-2.5 bg-cyan-500'></div>
+              <p className='text-dark-blue ml-3'>Live</p>
+              </div>
+              <p className='text-neutral-600 font-bold mr-2 ml-3'>1</p>
             </li>
           </ul>
         </HeaderBox>
