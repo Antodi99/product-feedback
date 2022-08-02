@@ -1,10 +1,9 @@
-import { Card } from './components'
-import Header from './components/Header'
+import { Header } from './components'
 
 const App = () => {
   return (
-    <div >
-      <Header/>
+    <div>
+      <Header />
     </div>
   )
 }
