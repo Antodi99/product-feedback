@@ -4,11 +4,10 @@ import HeaderBox from './UI/HeaderBox'
 
 function Header() {
   return (
-    <header className='h-96 w-2/12 mt-24 px-8 pb-8'>
-        <div className='h-1/3 bg-background-header bg-no-repeat flex items-end rounded-lg'>
-          <h1 className='m-4 text-white font-bold text-xl'>Feedback Card</h1>
-        </div>
-      <ul className='h-full'>
+    <ul className='Header flex lg:flex-col'>
+        <li className='md:w-1/3 h-auto lg:h-1/3 lg:w-full grow bg-background-header bg-no-repeat bg-cover flex items-end md:rounded-lg p-4'>
+          <h1 className='text-white font-bold text-xl'>Feedback Card</h1>
+        </li>
 
         <HeaderBox >
           <ul className='h-fix flex flex-wrap'>
@@ -51,7 +50,6 @@ function Header() {
           </ul>
         </HeaderBox>
       </ul>
-    </header>
   )
 }
 
