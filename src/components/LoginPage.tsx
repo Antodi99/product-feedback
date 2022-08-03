@@ -14,12 +14,9 @@ function LoginPage() {
           className='pl-4 outline-none bg-light-grey rounded-lg h-10 w-full'
         />
       </div>
-      <button className='mt-8 rounded-xl w-full p-2 md:p-3 bg-fuchsia-500 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
-        <p className='text-white font-semibold ml-2 text-lg'>Login</p>
-      </button>
       <button className='mt-4 rounded-xl w-full p-2 md:p-3 bg-black flex items-center justify-center hover:bg-neutral-700 cursor-pointer'>
         <FaGithub className='text-white text-3xl' />
-        <p className='text-white font-semibold ml-2'>Sign Up with GitHub</p>
+        <p className='text-white font-semibold ml-2'>Login with GitHub</p>
       </button>
     </div>
   )
