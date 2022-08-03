@@ -1,9 +1,9 @@
-import { Header } from './components'
+import EditFeedback from './components/EditFeedback'
 
 const App = () => {
   return (
     <div>
-      <Header />
+      <EditFeedback />
     </div>
   )
 }
