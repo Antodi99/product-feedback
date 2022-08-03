@@ -1,9 +1,9 @@
-import { Header } from './components'
+import FeedBackCard from './components/FeedBackCard'
 
 const App = () => {
   return (
     <div>
-      <Header />
+      <FeedBackCard />
     </div>
   )
 }
