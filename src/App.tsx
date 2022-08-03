@@ -1,9 +1,9 @@
-import { Header } from './components'
+import AddComment from './components/AddComment'
 
 const App = () => {
   return (
     <div>
-      <Header />
+      <AddComment />
     </div>
   )
 }
