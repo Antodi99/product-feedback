@@ -6,7 +6,9 @@ function ManageBar() {
     <div className='bg-dark-blue rounded-lg p-4 flex items-center justify-between text-xs md:text-sm'>
       <div className='flex items-center w-1/2'>
         <FaVoteYea className='text-white text-3xl hidden md:inline-block' />
-        <h1 className='text-xl font-bold md:ml-3 lg:ml-9 text-white hidden md:inline-block'>6 Suggestions</h1>
+        <h1 className='text-xl font-bold md:ml-3 lg:ml-9 text-white hidden md:inline-block'>
+          6 Suggestions
+        </h1>
         <button className='flex md:ml-3 lg:ml-9 text-white hover:text-dark-grey'>
           <p className=''>Sort By :</p>
           <div className='ml-2 lg:ml-4 flex font-bold items-center'>
