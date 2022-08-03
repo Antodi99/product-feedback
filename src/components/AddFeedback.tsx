@@ -26,7 +26,7 @@ function AddFeedback() {
         <p className='text-dark-blue text-sm'>
           Include any specific comments on what should be improved, added, etc.
         </p>
-        <input className='bg-light-grey p-2 w-full outline-none rounded-lg mt-4 h-32'></input>
+        <textarea className='bg-light-grey p-2 resize-none w-full outline-none rounded-lg mt-4 h-32'></textarea>
       </div>
       <div className='flex flex-col-reverse md:flex-row md:justify-end mt-10'>
         <div className='rounded-xl p-2 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
