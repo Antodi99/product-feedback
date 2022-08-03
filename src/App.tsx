@@ -1,9 +1,9 @@
-import { Header } from './components'
+import SortByMenu from './components/SortByMenu'
 
 const App = () => {
   return (
     <div>
-      <Header />
+      <SortByMenu />
     </div>
   )
 }
