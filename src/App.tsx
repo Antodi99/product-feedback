@@ -1,10 +1,9 @@
-import { Card } from './components'
-import ManageBar from './components/ManageBar'
+import { Header } from './components'
 
 const App = () => {
   return (
-    <div className='App'>
-      <ManageBar />
+    <div>
+      <Header />
     </div>
   )
 }
