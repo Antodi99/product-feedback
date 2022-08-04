@@ -1,4 +1,3 @@
-import React from 'react'
 import Avatar from '../assets/images/users/image-roxanne.jpg'
 
 function Comment() {
