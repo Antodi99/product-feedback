@@ -17,9 +17,10 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
     "lint:fix": "npm run lint -- --fix",
-    "check": "tsc --noEmit"
+    "test": "echo No test script, skipping for now...",
+    "check": "tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "autoprefixer": "^10.4.7",
@@ -48,5 +49,9 @@
     "tailwindcss": "^3.1.6",
     "typescript": "^4.7.4"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "volta": {
+    "node": "16.14.2",
+    "npm": "8.5.0"
+  }
 }

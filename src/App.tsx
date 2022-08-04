@@ -1,9 +1,10 @@
-import NoFeedback from './components/NoFeedback'
+import EditFeedback from './components/EditFeedback'
+
 
 const App = () => {
   return (
     <div>
-      <NoFeedback />
+      <EditFeedback />
     </div>
   )
 }
