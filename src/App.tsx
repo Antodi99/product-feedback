@@ -1,9 +1,9 @@
-import AddComment from './components/AddComment'
+import EditFeedback from './components/EditFeedback'
 
 const App = () => {
   return (
     <div>
-      <AddComment />
+      <EditFeedback />
     </div>
   )
 }
