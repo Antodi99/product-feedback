@@ -1,9 +1,9 @@
-import LoginPage from './components/LoginPage'
+import EditFeedback from './components/EditFeedback'
 
 const App = () => {
   return (
     <div>
-      <LoginPage />
+      <EditFeedback />
     </div>
   )
 }
