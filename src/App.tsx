@@ -1,9 +1,9 @@
-import AddFeedback from './components/AddFeedback'
+import EditFeedback from './components/EditFeedback'
 
 const App = () => {
   return (
     <div>
-      <AddFeedback />
+      <EditFeedback />
     </div>
   )
 }
