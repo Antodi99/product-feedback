@@ -1,9 +1,9 @@
-import FeedBackCard from './components/FeedBackCard'
+import EditFeedback from './components/EditFeedback'
 
 const App = () => {
   return (
     <div>
-      <FeedBackCard />
+      <EditFeedback />
     </div>
   )
 }
