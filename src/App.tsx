@@ -1,9 +1,9 @@
-import SortByMenu from './components/SortByMenu'
+import EditFeedback from './components/EditFeedback'
 
 const App = () => {
   return (
     <div>
-      <SortByMenu />
+      <EditFeedback />
     </div>
   )
 }
