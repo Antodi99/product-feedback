@@ -3,10 +3,10 @@ import { FaVoteYea, FaAngleDown } from 'react-icons/fa'
 
 function ManageBar() {
   return (
-    <div className='bg-dark-blue rounded-lg p-4 flex items-center justify-between text-xs md:text-sm'>
-      <div className='flex items-center w-1/2'>
+    <div className='bg-dark-blue md:rounded-lg p-4 flex items-center justify-between text-xs md:text-sm'>
+      <div className='flex items-center w-4/5'>
         <FaVoteYea className='text-white text-3xl hidden md:inline-block' />
-        <h1 className='text-xl font-bold md:ml-3 lg:ml-9 text-white hidden md:inline-block'>
+        <h1 className='text-lg font-bold md:ml-3 lg:ml-9 text-white hidden md:inline-block'>
           6 Suggestions
         </h1>
         <button className='flex md:ml-3 lg:ml-9 text-white hover:text-dark-grey'>
@@ -17,8 +17,10 @@ function ManageBar() {
           </div>
         </button>
       </div>
-      <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-28 md:w-44 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
-        <p className='text-white font-bold'>+ Add Feedback</p>
+      <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-40 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
+        <p className='text-white font-bold text-xs md:text-base'>
+          + Add Feedback
+        </p>
       </div>
     </div>
   )
