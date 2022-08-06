@@ -4,7 +4,7 @@ import AddComment from './AddComment'
 import { Card } from './Card'
 import Comment from './Comment'
 
-function EditFeedbackPage() {
+function FeedbackPage() {
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:p-12 pb-7'>
       <div className='flex justify-between items-center'>
@@ -33,4 +33,4 @@ function EditFeedbackPage() {
   )
 }
 
-export default EditFeedbackPage
+export default FeedbackPage
