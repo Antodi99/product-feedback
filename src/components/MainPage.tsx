@@ -4,11 +4,11 @@ import ManageBar from './ManageBar'
 
 function MainPage() {
   return (
-    <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-12 lg:pt-24'>
+    <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:pt-20'>
       <Header />
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-5/12'>
         <ManageBar />
-        <div className='px-4 md:px-0'>
+        <div className='px-4 pb-4 md:px-0 md:pb-0'>
           <Card
             title={'12312'}
             description={'1231'}
