@@ -2,7 +2,7 @@ import React from 'react'
 
 function AddComment() {
   return (
-    <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
+    <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full mt-4'>
       <p className='text-dark-blue text-lg font-bold'>Add Comment</p>
       <textarea
         className='bg-light-grey p-2 resize-none w-full outline-none rounded-lg mt-4 h-20 text-dark-blue'
