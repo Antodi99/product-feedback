@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { CategoryButton } from './CattegoryButton'
 import { HeaderBox } from './HeaderBox'
 
@@ -22,7 +23,9 @@ export function Header() {
       <HeaderBox>
         <div className='flex justify-between'>
           <p className='text-lg font-bold text-dark-blue'>Roadmap</p>
-          <button className='text-light-blue underline text-sm'>View</button>
+          <Link to={'/roadmap'}>
+            <button className='text-light-blue underline text-sm'>View</button>
+          </Link>
         </div>
         <ul className='mt-5 list-disc'>
           <li className='flex justify-between'>
