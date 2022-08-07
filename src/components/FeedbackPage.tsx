@@ -7,7 +7,7 @@ import Comment from './Comment'
 
 function FeedbackPage() {
   return (
-    <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:p-12 pb-7'>
+    <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:p-12 pb-7 md:mt-8'>
       <div className='flex justify-between items-center'>
         <Link to={'/'}>
           <div className='flex items-center hover:underline cursor-pointer'>
