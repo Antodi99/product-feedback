@@ -8,12 +8,12 @@ function RoadmapPage() {
     <div className='w-4/5 lg:w-7/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:p-12 pb-7'>
       <div className='flex justify-between items-center bg-dark-blue h-28 px-4 rounded-xl'>
         <div className=''>
-          <div className='flex items-center hover:underline cursor-pointer'>
-            <FaAngleLeft className='text-white text-sm' />
-            <p className='text-white font-bold text-xs ml-3'>
-              <Link to={'/'}>Go Back</Link>
-            </p>
-          </div>
+          <Link to={'/'}>
+            <div className='flex items-center hover:underline cursor-pointer'>
+              <FaAngleLeft className='text-white text-sm' />
+              <p className='text-white font-bold text-xs ml-3'>Go Back</p>
+            </div>
+          </Link>
           <h1 className='mt-2 text-2xl text-white font-bold'>Roadmap</h1>
         </div>
         <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
