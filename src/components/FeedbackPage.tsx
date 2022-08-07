@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaAngleLeft } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import AddComment from './AddComment'
 import { Card } from './Card'
 import Comment from './Comment'
@@ -11,7 +12,7 @@ function FeedbackPage() {
         <div className='flex items-center hover:underline cursor-pointer'>
           <FaAngleLeft className='text-light-blue' />
           <p className='text-dark-blue font-bold text-sm ml-4'>
-            <a href='/'>Go Back</a>
+            <Link to={'/'}>Go Back</Link>
           </p>
         </div>
         <div className='rounded-xl p-2 md:px-6 bg-light-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>

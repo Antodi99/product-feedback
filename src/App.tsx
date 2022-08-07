@@ -5,7 +5,7 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<MainPage />} />
-      <Route path='/EditFeedback' element={<FeedbackPage />} />
+      <Route path='/feedback/:id' element={<FeedbackPage />} />
     </Routes>
   )
 }
