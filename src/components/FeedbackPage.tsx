@@ -15,9 +15,11 @@ function FeedbackPage() {
             <p className='text-dark-blue font-bold text-sm ml-4'>Go Back</p>
           </div>
         </Link>
-        <div className='rounded-xl p-2 md:px-6 bg-light-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
-          <p className='text-white font-bold text-sm'>Edit Feedback</p>
-        </div>
+        <Link to={'/feedback/:id/edit'}>
+          <div className='rounded-xl p-2 md:px-6 bg-light-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
+            <p className='text-white font-bold text-sm'>Edit Feedback</p>
+          </div>
+        </Link>
       </div>
       <main className=''>
         <Card
