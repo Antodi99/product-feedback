@@ -1,4 +1,5 @@
 import { FaAngleDown } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function AddFeedback() {
   return (
@@ -29,9 +30,11 @@ function AddFeedback() {
         <textarea className='bg-light-grey p-2 resize-none w-full outline-none rounded-lg mt-4 h-32'></textarea>
       </div>
       <div className='flex flex-col-reverse md:flex-row md:justify-end mt-10'>
-        <div className='rounded-xl p-2 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
-          <p className='text-white font-bold text-sm'>Cancel</p>
-        </div>
+        <Link to={'/'}>
+          <div className='rounded-xl p-2 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
+            <p className='text-white font-bold text-sm'>Cancel</p>
+          </div>
+        </Link>
         <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
           <p className='text-white font-bold text-sm'>Add Feedback</p>
         </div>
