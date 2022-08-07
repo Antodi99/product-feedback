@@ -10,7 +10,7 @@ function MainPage() {
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-5/12'>
         <ManageBar />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
-          <Link to={'/feedback/${feedback.id'}>
+          <Link to={'/feedback/${feedback.id}'}>
             <Card
               title={'12312'}
               description={'1231'}
