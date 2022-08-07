@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaVoteYea, FaAngleDown } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function ManageBar() {
   return (
@@ -17,11 +18,13 @@ function ManageBar() {
           </div>
         </button>
       </div>
-      <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-40 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
-        <p className='text-white font-bold text-xs md:text-base'>
-          + Add Feedback
-        </p>
-      </div>
+      <Link to={'/feedback/add'}>
+        <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-36 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
+          <p className='text-white font-bold text-xs md:text-sm'>
+            + Add Feedback
+          </p>
+        </div>
+      </Link>
     </div>
   )
 }
