@@ -40,7 +40,7 @@ function EditFeedback() {
         <textarea className='bg-light-grey p-2 resize-none w-full outline-none rounded-lg mt-4 h-32'></textarea>
       </div>
       <div className='flex flex-col-reverse md:flex-row md:justify-between mt-10'>
-        <div className='rounded-xl p-2 mt-3 md:mt-0 md:px-6 bg-red-900 w-content flex items-center justify-center hover:bg-red-400 cursor-pointer'>
+        <div className='rounded-xl p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-red-900 w-content flex items-center justify-center hover:bg-red-400 cursor-pointer'>
           <p className='text-white font-bold text-sm'>Delete</p>
         </div>
         <div className='flex flex-col-reverse md:flex-row'>

@@ -31,7 +31,7 @@ function AddFeedback() {
       </div>
       <div className='flex flex-col-reverse md:flex-row md:justify-end mt-10'>
         <Link to={'/'}>
-          <div className='rounded-xl p-2 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
+          <div className='rounded-xl p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
             <p className='text-white font-bold text-sm'>Cancel</p>
           </div>
         </Link>

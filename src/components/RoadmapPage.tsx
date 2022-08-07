@@ -16,9 +16,11 @@ function RoadmapPage() {
           </Link>
           <h1 className='mt-2 text-2xl text-white font-bold'>Roadmap</h1>
         </div>
-        <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
-          <p className='text-white font-bold text-sm'>+ Add Feedback</p>
-        </div>
+        <Link to={'/feedback/add'}>
+          <div className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
+            <p className='text-white font-bold text-sm'>+ Add Feedback</p>
+          </div>
+        </Link>
       </div>
       <main className='flex flex-row'>
         <div className='w-1/3 flex flex-col'>
