@@ -40,20 +40,14 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
       >
         <Menu.Items className='origin-top-right absolute left-0 md:right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none'>
           {options.map((option, idx) => (
-            <div
-              className='flex justify-between items-center px-4 py-3'
-              key={idx}
-            >
-              <Menu.Item>
-                <a
-                  href='#'
-                  className='text-base text-dark-blue hover:text-violet-600'
-                  onClick={() => setSelected(option)}
-                >
-                  {option}
-                </a>
-              </Menu.Item>
-            </div>
+            <Menu.Item key={idx}>
+              <div
+                className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-violet-600'
+                onClick={() => setSelected(option)}
+              >
+                {option}
+              </div>
+            </Menu.Item>
           ))}
         </Menu.Items>
       </Transition>
