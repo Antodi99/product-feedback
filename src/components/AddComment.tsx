@@ -1,6 +1,4 @@
-import React from 'react'
-
-function AddComment() {
+export function AddComment() {
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full mt-4'>
       <p className='text-dark-blue text-lg font-bold'>Add Comment</p>
@@ -17,5 +15,3 @@ function AddComment() {
     </div>
   )
 }
-
-export default AddComment

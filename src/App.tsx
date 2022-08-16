@@ -1,9 +1,11 @@
 import MainPage from './components/MainPage'
 import { Routes, Route } from 'react-router-dom'
-import FeedbackPage from './components/FeedbackPage'
-import RoadmapPage from './components/RoadmapPage'
-import AddFeedbackPage from './components/AddFeedbackPage'
-import EditFeedbackPage from './components/EditFeedbackPage'
+import {
+  AddFeedbackPage,
+  EditFeedbackPage,
+  FeedbackPage,
+  RoadmapPage,
+} from './components'
 
 const App = () => {
   return (

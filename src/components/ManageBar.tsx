@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FaVoteYea } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import MenuDropdown from './MenuDropdown'
+import { MenuDropdown } from './MenuDropdown'
 
 function ManageBar() {
   const [selected, setSelected] = useState('Most Upvotes')

@@ -1,9 +1,8 @@
-import React from 'react'
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import AddFeedback from './AddFeedback'
 
-function AddFeedbackPage() {
+export function AddFeedbackPage() {
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:p-12 pb-7 mt-3 md:mt-8'>
       <div className='flex justify-between items-center'>
@@ -20,5 +19,3 @@ function AddFeedbackPage() {
     </div>
   )
 }
-
-export default AddFeedbackPage
