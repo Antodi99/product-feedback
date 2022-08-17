@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
@@ -16,22 +17,21 @@ type MenuDropdownProps = {
 }
 
 export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
-  const [isActive, setIsActive] = useState(false)
+  const [open, setOpen] = useState(false)
 
   return (
     <Menu as='div' className='relative inline-block text-left md:ml-2 w-52'>
       <div>
         <Menu.Button
           className='inline-flex w-full rounded-md px-4 py-2 text-sm font-medium text-white justify-between'
-          onClick={() => setIsActive(!isActive)}
+          onClick={() => setOpen(!open)}
         >
           Sort by : {selected}
           <ChevronDownIcon
-            className={
-              isActive
-                ? '-mr-1 h-5 w-5 rotate-180 ease-linear duration-150'
-                : '-mr-1 h-5 w-5 ease-linear duration-150'
-            }
+            className={clsx(
+              '-mr-1 h-5 w-5 ease-linear duration-150',
+              open && 'rotate-180'
+            )}
             aria-hidden='true'
           />
         </Menu.Button>
@@ -53,7 +53,7 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
                 className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-violet-600'
                 onClick={() => {
                   setSelected(option)
-                  setIsActive(false)
+                  setOpen(false)
                 }}
               >
                 {option}
