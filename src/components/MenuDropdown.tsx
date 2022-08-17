@@ -20,10 +20,10 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
   const [open, setOpen] = useState(false)
 
   return (
-    <Menu as='div' className='relative inline-block text-left md:ml-2 w-52'>
+    <Menu as='div' className='relative inline-block text-left w-44 md:w-52'>
       <div>
         <Menu.Button
-          className='inline-flex w-full rounded-md px-4 py-2 text-sm font-medium text-white justify-between'
+          className='inline-flex w-full rounded-md px-4 py-2 text-xs md:text-sm font-medium text-white justify-between'
           onClick={() => setOpen(!open)}
         >
           Sort by : {selected}
