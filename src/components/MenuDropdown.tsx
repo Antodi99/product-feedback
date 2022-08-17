@@ -19,18 +19,18 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
   const [isActive, setIsActive] = useState(false)
 
   return (
-    <Menu as='div' className='relative inline-block text-left md:ml-6'>
+    <Menu as='div' className='relative inline-block text-left md:ml-2 w-52'>
       <div>
         <Menu.Button
-          className='inline-flex justify-center w-full rounded-md px-4 py-2 text-sm font-medium text-white'
+          className='inline-flex w-full rounded-md px-4 py-2 text-sm font-medium text-white justify-between'
           onClick={() => setIsActive(!isActive)}
         >
           Sort by : {selected}
           <ChevronDownIcon
             className={
               isActive
-                ? '-mr-1 ml-2 h-5 w-5 rotate-180 ease-linear duration-150'
-                : '-mr-1 ml-2 h-5 w-5 ease-linear duration-150'
+                ? '-mr-1 h-5 w-5 rotate-180 ease-linear duration-150'
+                : '-mr-1 h-5 w-5 ease-linear duration-150'
             }
             aria-hidden='true'
           />
@@ -51,7 +51,10 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
             <Menu.Item key={idx}>
               <div
                 className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-violet-600'
-                onClick={() => setSelected(option)}
+                onClick={() => {
+                  setSelected(option)
+                  setIsActive(false)
+                }}
               >
                 {option}
                 {selected === option && (
