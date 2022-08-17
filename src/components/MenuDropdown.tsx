@@ -26,7 +26,14 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
           onClick={() => setIsActive(!isActive)}
         >
           Sort by : {selected}
-          <ChevronDownIcon className='-mr-1 ml-2 h-5 w-5' aria-hidden='true' />
+          <ChevronDownIcon
+            className={
+              isActive
+                ? '-mr-1 ml-2 h-5 w-5 rotate-180 ease-linear duration-150'
+                : '-mr-1 ml-2 h-5 w-5 ease-linear duration-150'
+            }
+            aria-hidden='true'
+          />
         </Menu.Button>
       </div>
 
