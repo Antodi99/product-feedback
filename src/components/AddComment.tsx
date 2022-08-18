@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 const MAX_INPUT_LENGTH = 250
 
-function AddComment() {
+export function AddComment() {
   const [text, setText] = useState('')
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full mt-4'>
@@ -25,5 +25,3 @@ function AddComment() {
     </div>
   )
 }
-
-export default AddComment

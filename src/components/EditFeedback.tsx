@@ -1,7 +1,6 @@
-import React from 'react'
 import { FaAngleDown } from 'react-icons/fa'
 
-function EditFeedback() {
+export function EditFeedback() {
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
       <h1 className='text-dark-blue text-2xl font-bold'>
@@ -55,5 +54,3 @@ function EditFeedback() {
     </div>
   )
 }
-
-export default EditFeedback

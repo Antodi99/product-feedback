@@ -6,7 +6,7 @@ export function Header() {
   return (
     <ul className='Header flex lg:flex-col h-2/5 w-full lg:w-56'>
       <li className='md:w-1/3 h-auto lg:h-32 lg:w-full grow bg-background-header bg-no-repeat bg-cover flex items-end md:rounded-lg p-4'>
-        <h1 className='text-white font-bold text-xl'>Feedback Card</h1>
+        <h1 className='text-white font-bold text-xl'>Feedback Board</h1>
       </li>
 
       <HeaderBox>

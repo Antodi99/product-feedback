@@ -32,9 +32,9 @@ const feedbackList = [
 
 function MainPage() {
   return (
-    <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:pt-20'>
+    <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
       <Header />
-      <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-5/12'>
+      <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-[45rem]'>
         <ManageBar />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
           {feedbackList.map((feedback) => (

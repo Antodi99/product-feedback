@@ -1,7 +1,6 @@
-import React from 'react'
 import { FaAngleUp, FaComment } from 'react-icons/fa'
 
-function FeedBackCard() {
+export function FeedBackCard() {
   return (
     <div className='bg-white flex flex-col rounded-lg justify-between h-fit w-full hover:cursor-pointer mb-8'>
       <div className='w-full h-1.5 bg-purple-600 rounded-t-lg'></div>
@@ -29,5 +28,3 @@ function FeedBackCard() {
     </div>
   )
 }
-
-export default FeedBackCard
