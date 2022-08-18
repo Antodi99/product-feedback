@@ -1,6 +1,10 @@
-import { FaAngleDown } from 'react-icons/fa'
+import { useState } from 'react'
+import { CategoryMenu } from './CategoryMenu'
+import { StatusMenu } from './StatusMenu'
 
 export function EditFeedback() {
+  const [selectedCategory, setSelectedCategory] = useState('UI')
+  const [selectedStatus, setSelectedStatus] = useState('Suggestion')
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
       <h1 className='text-dark-blue text-2xl font-bold'>
@@ -18,18 +22,15 @@ export function EditFeedback() {
         <p className='text-dark-blue text-sm'>
           Choose a category for you feedback
         </p>
-        <div className='bg-light-grey p-2 w-full outline-none rounded-lg mt-4 flex justify-between items-center text-light-blue hover:text-fuchsia-400 cursor-pointer'>
-          <p className='ml-4'>UI</p>
-          <FaAngleDown className='text-light-blue' />
-        </div>
+        <CategoryMenu
+          selected={selectedCategory}
+          setSelected={setSelectedCategory}
+        />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Update Status</p>
         <p className='text-dark-blue text-sm'>Change feedback state</p>
-        <div className='bg-light-grey p-2 w-full outline-none rounded-lg mt-4 flex justify-between items-center text-light-blue hover:text-fuchsia-400 cursor-pointer'>
-          <p className='ml-4'>Suggeston</p>
-          <FaAngleDown className='text-light-blue' />
-        </div>
+        <StatusMenu selected={selectedStatus} setSelected={setSelectedStatus} />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Feedback Detail</p>
