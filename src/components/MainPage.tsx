@@ -37,8 +37,8 @@ function MainPage() {
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-[45rem]'>
         <ManageBar />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
-          {feedbackList.map((feedback) => (
-            <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
+          {feedbackList.map((feedback, idx) => (
+            <Link key={idx} to={`/feedback/${feedback.id}`}>
               <Card
                 title={feedback.title}
                 description={feedback.description}
