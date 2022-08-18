@@ -13,9 +13,8 @@ export function AddComment() {
           setText(e.target.value)
         }}
         maxLength={MAX_INPUT_LENGTH}
-      >
-        {text}
-      </textarea>
+        value={text}
+      ></textarea>
       <div className='flex justify-between mt-4 items-center text-dark-blue text-sm'>
         <p>{MAX_INPUT_LENGTH - text.length} Characters left</p>
         <div className='rounded-xl p-3 bg-fuchsia-500 w-fit md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'>
