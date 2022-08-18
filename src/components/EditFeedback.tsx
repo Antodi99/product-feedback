@@ -1,6 +1,12 @@
-import { FaAngleDown } from 'react-icons/fa'
+import { useState } from 'react'
+import { Dropdown } from './Dropdown'
+
+const optionsStatus = ['Suggestion', 'Planned', 'In-Progress', 'Live']
+const optionsCategory = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
 export function EditFeedback() {
+  const [selectedCategory, setSelectedCategory] = useState('UI')
+  const [selectedStatus, setSelectedStatus] = useState('Suggestion')
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
       <h1 className='text-dark-blue text-2xl font-bold'>
@@ -18,18 +24,20 @@ export function EditFeedback() {
         <p className='text-dark-blue text-sm'>
           Choose a category for you feedback
         </p>
-        <div className='bg-light-grey p-2 w-full outline-none rounded-lg mt-4 flex justify-between items-center text-light-blue hover:text-fuchsia-400 cursor-pointer'>
-          <p className='ml-4'>UI</p>
-          <FaAngleDown className='text-light-blue' />
-        </div>
+        <Dropdown
+          selected={selectedCategory}
+          setSelected={setSelectedCategory}
+          options={optionsCategory}
+        />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Update Status</p>
         <p className='text-dark-blue text-sm'>Change feedback state</p>
-        <div className='bg-light-grey p-2 w-full outline-none rounded-lg mt-4 flex justify-between items-center text-light-blue hover:text-fuchsia-400 cursor-pointer'>
-          <p className='ml-4'>Suggeston</p>
-          <FaAngleDown className='text-light-blue' />
-        </div>
+        <Dropdown
+          selected={selectedStatus}
+          setSelected={setSelectedStatus}
+          options={optionsStatus}
+        />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Feedback Detail</p>
