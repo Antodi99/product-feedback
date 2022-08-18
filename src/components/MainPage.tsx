@@ -13,7 +13,7 @@ const feedbackList = [
     votesCount: 34,
   },
   {
-    id: 1,
+    id: 2,
     title: 'test title',
     description: 'some description',
     commentsCount: 3,
@@ -21,7 +21,7 @@ const feedbackList = [
     votesCount: 34,
   },
   {
-    id: 1,
+    id: 3,
     title: 'test title',
     description: 'some description',
     commentsCount: 2,
