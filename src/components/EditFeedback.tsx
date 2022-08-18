@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { CategoryMenu } from './CategoryMenu'
-import { StatusMenu } from './StatusMenu'
+import { Dropdown } from './Dropdown'
+
+const optionsStatus = ['Suggestion', 'Planned', 'In-Progress', 'Live']
+const optionsCategory = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
 export function EditFeedback() {
   const [selectedCategory, setSelectedCategory] = useState('UI')
@@ -22,15 +24,20 @@ export function EditFeedback() {
         <p className='text-dark-blue text-sm'>
           Choose a category for you feedback
         </p>
-        <CategoryMenu
+        <Dropdown
           selected={selectedCategory}
           setSelected={setSelectedCategory}
+          options={optionsCategory}
         />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Update Status</p>
         <p className='text-dark-blue text-sm'>Change feedback state</p>
-        <StatusMenu selected={selectedStatus} setSelected={setSelectedStatus} />
+        <Dropdown
+          selected={selectedStatus}
+          setSelected={setSelectedStatus}
+          options={optionsStatus}
+        />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Feedback Detail</p>
