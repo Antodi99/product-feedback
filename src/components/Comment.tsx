@@ -19,9 +19,9 @@ function Comment() {
               </p>
             </div>
           </div>
-          <p className='text-xs md:text-base text-light-blue font-bold'>
+          <button className='text-xs md:text-base text-light-blue font-bold'>
             Reply
-          </p>
+          </button>
         </div>
         <div>
           <p className='text-dark-blue text-xs md:text-base lg:text-lg mt-6'>
