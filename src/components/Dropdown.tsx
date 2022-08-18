@@ -7,7 +7,7 @@ import { FaCheck } from 'react-icons/fa'
 type DropdownProps = {
   selected: string
   setSelected: (selected: string) => void
-  options: any
+  options: string[]
 }
 
 export function Dropdown({ selected, setSelected, options }: DropdownProps) {
