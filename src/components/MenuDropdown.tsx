@@ -18,7 +18,7 @@ type MenuDropdownProps = {
 
 export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
   return (
-    <Menu as='div' className='relative inline-block text-left md:w-52 md:ml-6'>
+    <Menu as='div' className='relative inline-block text-left w-52 md:ml-6'>
       {({ open }) => (
         <>
           <div>
