@@ -20,7 +20,7 @@ export function MenuDropdown({ selected, setSelected }: MenuDropdownProps) {
   const [open, setOpen] = useState(false)
 
   return (
-    <Menu as='div' className='relative inline-block text-left md:w-52 md:ml-6'>
+    <Menu as='div' className='relative inline-block text-left w-52 md:ml-6'>
       <div>
         <Menu.Button
           className='inline-flex w-full rounded-md px-4 py-2 text-sm font-medium text-white justify-between'
