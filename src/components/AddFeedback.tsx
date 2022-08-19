@@ -1,7 +1,11 @@
-import { FaAngleDown } from 'react-icons/fa'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Dropdown } from './Dropdown'
+
+const optionsCategory = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
 function AddFeedback() {
+  const [selectedCategory, setSelectedCategory] = useState('UI')
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
       <h1 className='text-dark-blue text-2xl font-bold'>Create New Feedback</h1>
@@ -17,10 +21,11 @@ function AddFeedback() {
         <p className='text-dark-blue text-sm'>
           Choose a category for you feedback
         </p>
-        <div className='bg-light-grey p-2 w-full outline-none rounded-lg mt-4 flex justify-between items-center text-light-blue hover:text-fuchsia-400 cursor-pointer'>
-          <p className='ml-4'>UI</p>
-          <FaAngleDown className='text-light-blue' />
-        </div>
+        <Dropdown
+          selected={selectedCategory}
+          setSelected={setSelectedCategory}
+          options={optionsCategory}
+        />
       </div>
       <div className='mt-8'>
         <p className='text-dark-blue text-sm font-bold'>Feedback Detail</p>
