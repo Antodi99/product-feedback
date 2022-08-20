@@ -2,7 +2,14 @@ import { Link } from 'react-router-dom'
 import { CategoryButton } from './CattegoryButton'
 import { HeaderBox } from './HeaderBox'
 
-export function Header() {
+const options = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature']
+
+type HeaderProps = {
+  sortByCategory: string
+  setSortByCategory: (selected: string) => void
+}
+
+export function Header({ sortByCategory, setSortByCategory }: HeaderProps) {
   return (
     <ul className='Header flex lg:flex-col h-2/5 w-full lg:w-56'>
       <li className='md:w-1/3 h-auto lg:h-32 lg:w-full grow bg-background-header bg-no-repeat bg-cover flex items-end md:rounded-lg p-4'>
@@ -11,12 +18,11 @@ export function Header() {
 
       <HeaderBox>
         <ul className='h-fix flex flex-wrap'>
-          <CategoryButton category={'All'} />
-          <CategoryButton category={'UI'} />
-          <CategoryButton category={'UX'} />
-          <CategoryButton category={'Enhancement'} />
-          <CategoryButton category={'Bug'} />
-          <CategoryButton category={'Feature'} />
+          {options.map((category, idx) => (
+            <div onClick={() => setSortByCategory(category)} key={idx}>
+              <CategoryButton category={category} active={sortByCategory} />
+            </div>
+          ))}
         </ul>
       </HeaderBox>
 

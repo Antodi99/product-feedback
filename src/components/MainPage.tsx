@@ -19,7 +19,7 @@ const feedbackList: Feedback[] = [
     title: 'test title',
     description: 'some description',
     commentsCount: 3,
-    category: 'category',
+    category: 'Feature',
     votesCount: 34,
   },
   {
@@ -27,7 +27,7 @@ const feedbackList: Feedback[] = [
     title: 'test title',
     description: 'some description',
     commentsCount: 3,
-    category: 'category',
+    category: 'Enhancement',
     votesCount: 36,
   },
   {
@@ -35,7 +35,7 @@ const feedbackList: Feedback[] = [
     title: 'test title',
     description: 'some description',
     commentsCount: 2,
-    category: 'category',
+    category: 'UI',
     votesCount: 35,
   },
 ]
@@ -57,16 +57,39 @@ function sortByVotesAndComments(sortByFilter: string) {
   }
 }
 
+function filterByCategories(activeCategory: string) {
+  return (feedback: Feedback) => {
+    switch (activeCategory) {
+      case 'UI':
+        return feedback.category === 'UI'
+      case 'UX':
+        return feedback.category === 'UX'
+      case 'Enhancement':
+        return feedback.category === 'Enhancement'
+      case 'Bug':
+        return feedback.category === 'Bug'
+      case 'Feature':
+        return feedback.category === 'Feature'
+      default:
+        return feedbackList
+    }
+  }
+}
+
 function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
+  const [sortByCategory, setSortByCategory] = useState('All')
 
-  const filteredFeedbackList = feedbackList.sort(
-    sortByVotesAndComments(sortByFilter)
-  )
+  const filteredFeedbackList = feedbackList
+    .filter(filterByCategories(sortByCategory))
+    .sort(sortByVotesAndComments(sortByFilter))
 
   return (
     <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
-      <Header />
+      <Header
+        sortByCategory={sortByCategory}
+        setSortByCategory={setSortByCategory}
+      />
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-[45rem]'>
         <ManageBar
           sortByFilter={sortByFilter}
