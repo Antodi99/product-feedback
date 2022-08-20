@@ -1,4 +1,6 @@
+import clsx from 'clsx'
 import { FaAngleUp, FaComment } from 'react-icons/fa'
+import { Category } from './Header'
 
 type CardProps = {
   title: string
@@ -27,7 +29,13 @@ export function Card({
           {title}
         </p>
         <p className='text-dark-blue text-sm'>{description}</p>
-        <div className='bg-light-grey flex justify-center w-fit py-1 px-4 mt-4 md:mt-0 items-center rounded-lg hover:bg-light-grey-hov text-light-blue font-bold text-sm'>
+        <div
+          className={clsx(
+            'bg-light-grey flex justify-center w-fit py-1 px-4 mt-4 md:mt-0 items-center rounded-lg hover:bg-light-grey-hov text-light-blue font-bold text-sm capitalize',
+            (category === Category.UI || category === Category.UX) &&
+              '!uppercase'
+          )}
+        >
           {category}
         </div>
       </div>

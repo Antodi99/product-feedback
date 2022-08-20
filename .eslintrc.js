@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     'prettier/prettier': ['warn', { endOfLine: 'auto' }],
     'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
   settings: {
     react: {
