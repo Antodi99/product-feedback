@@ -2,11 +2,6 @@ import { FaVoteYea } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { MenuDropdown } from './MenuDropdown'
 
-type ManageBarProps = {
-  selected: string
-  setSelected: (selected: string) => void
-}
-
 const filterOptions = [
   'Most Upvotes',
   'Least Upvotes',
@@ -14,7 +9,12 @@ const filterOptions = [
   'Least Comments',
 ]
 
-function ManageBar({ selected, setSelected }: ManageBarProps) {
+type ManageBarProps = {
+  sortByFilter: string
+  setSortByFilter: (filter: string) => void
+}
+
+function ManageBar({ sortByFilter, setSortByFilter }: ManageBarProps) {
   return (
     <div className='bg-dark-blue md:rounded-lg p-4 flex items-center justify-between text-xs md:text-sm'>
       <div className='flex items-center w-4/5'>
@@ -23,8 +23,8 @@ function ManageBar({ selected, setSelected }: ManageBarProps) {
           6 Suggestions
         </h1>
         <MenuDropdown
-          selected={selected}
-          setSelected={setSelected}
+          selected={sortByFilter}
+          setSelected={setSortByFilter}
           filterOptions={filterOptions}
         />
       </div>

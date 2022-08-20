@@ -4,7 +4,16 @@ import { Card } from './Card'
 import { Header } from './Header'
 import ManageBar from './ManageBar'
 
-const feedbackList = [
+type Feedback = {
+  id: number
+  title: string
+  description: string
+  commentsCount: number
+  category: string
+  votesCount: number
+}
+
+const feedbackList: Feedback[] = [
   {
     id: 1,
     title: 'test title',
@@ -32,7 +41,7 @@ const feedbackList = [
 ]
 
 function sortByVotesAndComments(sortByFilter: string) {
-  return (a: any, b: any) => {
+  return (a: Feedback, b: Feedback) => {
     switch (sortByFilter) {
       case 'Most Upvotes':
         return b.votesCount - a.votesCount
@@ -59,7 +68,10 @@ function MainPage() {
     <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
       <Header />
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-[45rem]'>
-        <ManageBar selected={sortByFilter} setSelected={setSortByFilter} />
+        <ManageBar
+          sortByFilter={sortByFilter}
+          setSortByFilter={setSortByFilter}
+        />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
           {filteredFeedbackList.map((feedback) => (
             <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
