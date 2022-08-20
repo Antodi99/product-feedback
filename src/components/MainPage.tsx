@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card } from './Card'
-import { Header } from './Header'
+import { Category, Header } from './Header'
 import ManageBar from './ManageBar'
 
 type Feedback = {
@@ -19,7 +19,7 @@ const feedbackList: Feedback[] = [
     title: 'test title',
     description: 'some description',
     commentsCount: 3,
-    category: 'Feature',
+    category: 'feature',
     votesCount: 34,
   },
   {
@@ -27,7 +27,7 @@ const feedbackList: Feedback[] = [
     title: 'test title',
     description: 'some description',
     commentsCount: 3,
-    category: 'Enhancement',
+    category: 'enhancement',
     votesCount: 36,
   },
   {
@@ -35,7 +35,7 @@ const feedbackList: Feedback[] = [
     title: 'test title',
     description: 'some description',
     commentsCount: 2,
-    category: 'UI',
+    category: 'ui',
     votesCount: 35,
   },
 ]
@@ -60,35 +60,35 @@ function sortByVotesAndComments(sortByFilter: string) {
 function filterByCategories(activeCategory: string) {
   return (feedback: Feedback) => {
     switch (activeCategory) {
-      case 'UI':
-        return feedback.category === 'UI'
-      case 'UX':
-        return feedback.category === 'UX'
-      case 'Enhancement':
-        return feedback.category === 'Enhancement'
-      case 'Bug':
-        return feedback.category === 'Bug'
-      case 'Feature':
-        return feedback.category === 'Feature'
+      case Category.UI:
+        return feedback.category === Category.UI
+      case Category.UX:
+        return feedback.category === Category.UX
+      case Category.Enhancement:
+        return feedback.category === Category.Enhancement
+      case Category.Defect:
+        return feedback.category === Category.Defect
+      case Category.Feature:
+        return feedback.category === Category.Feature
       default:
-        return feedbackList
+        return true
     }
   }
 }
 
 function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
-  const [sortByCategory, setSortByCategory] = useState('All')
+  const [filterByCategory, setFilterByCategory] = useState('all')
 
   const filteredFeedbackList = feedbackList
-    .filter(filterByCategories(sortByCategory))
+    .filter(filterByCategories(filterByCategory))
     .sort(sortByVotesAndComments(sortByFilter))
 
   return (
     <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
       <Header
-        sortByCategory={sortByCategory}
-        setSortByCategory={setSortByCategory}
+        filterByCategory={filterByCategory}
+        setFilterByCategory={setFilterByCategory}
       />
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-[45rem]'>
         <ManageBar

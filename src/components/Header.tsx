@@ -2,14 +2,22 @@ import { Link } from 'react-router-dom'
 import { CategoryButton } from './CattegoryButton'
 import { HeaderBox } from './HeaderBox'
 
-const options = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature']
-
-type HeaderProps = {
-  sortByCategory: string
-  setSortByCategory: (selected: string) => void
+export enum Category {
+  UI = 'ui',
+  UX = 'ux',
+  Enhancement = 'enhancement',
+  Defect = 'defect',
+  Feature = 'feature',
 }
 
-export function Header({ sortByCategory, setSortByCategory }: HeaderProps) {
+const options = ['all', ...Object.values(Category)]
+
+type HeaderProps = {
+  filterByCategory: string
+  setFilterByCategory: (selected: string) => void
+}
+
+export function Header({ filterByCategory, setFilterByCategory }: HeaderProps) {
   return (
     <ul className='Header flex lg:flex-col h-2/5 w-full lg:w-56'>
       <li className='md:w-1/3 h-auto lg:h-32 lg:w-full grow bg-background-header bg-no-repeat bg-cover flex items-end md:rounded-lg p-4'>
@@ -19,8 +27,8 @@ export function Header({ sortByCategory, setSortByCategory }: HeaderProps) {
       <HeaderBox>
         <ul className='h-fix flex flex-wrap'>
           {options.map((category, idx) => (
-            <div onClick={() => setSortByCategory(category)} key={idx}>
-              <CategoryButton category={category} active={sortByCategory} />
+            <div onClick={() => setFilterByCategory(category)} key={idx}>
+              <CategoryButton category={category} active={filterByCategory} />
             </div>
           ))}
         </ul>
