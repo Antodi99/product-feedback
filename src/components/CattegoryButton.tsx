@@ -11,7 +11,7 @@ export function CategoryButton({ category, active }: CategoryButtonProps) {
     <div
       className={clsx(
         'select-none bg-light-grey flex justify-center w-fit py-1 px-4 m-1 items-center rounded-lg hover:bg-light-grey-hov text-light-blue font-bold text-sm cursor-pointer capitalize',
-        category === active && 'text-white bg-light-grey-hov',
+        category === active && '!text-white !bg-light-blue',
         (category === Category.UI || category === Category.UX) && '!uppercase'
       )}
     >
