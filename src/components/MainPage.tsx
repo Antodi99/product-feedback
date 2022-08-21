@@ -97,21 +97,18 @@ function MainPage() {
           setSortByFilter={setSortByFilter}
         />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
-          {filteredFeedbackList.length === 0 ? (
-            <NoFeedback />
-          ) : (
-            filteredFeedbackList.map((feedback) => (
-              <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
-                <Card
-                  title={feedback.title}
-                  description={feedback.description}
-                  comment={feedback.commentsCount}
-                  category={feedback.category}
-                  vote={feedback.votesCount}
-                ></Card>
-              </Link>
-            ))
-          )}
+          {!filteredFeedbackList.length && <NoFeedback />}
+          {filteredFeedbackList?.map((feedback) => (
+            <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
+              <Card
+                title={feedback.title}
+                description={feedback.description}
+                comment={feedback.commentsCount}
+                category={feedback.category}
+                vote={feedback.votesCount}
+              ></Card>
+            </Link>
+          ))}
         </div>
       </main>
     </div>
