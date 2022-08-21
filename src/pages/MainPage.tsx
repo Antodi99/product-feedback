@@ -76,7 +76,7 @@ function filterByCategories(activeCategory: string) {
   }
 }
 
-function MainPage() {
+export function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
   const [filterByCategory, setFilterByCategory] = useState('all')
 
@@ -113,5 +113,3 @@ function MainPage() {
     </div>
   )
 }
-
-export default MainPage

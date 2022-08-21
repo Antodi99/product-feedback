@@ -4,8 +4,8 @@ import {
   EditFeedbackPage,
   FeedbackPage,
   RoadmapPage,
-} from './components'
-import MainPage from './pages/MainPage'
+  MainPage,
+} from './pages'
 
 const App = () => {
   return (
