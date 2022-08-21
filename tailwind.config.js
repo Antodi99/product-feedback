@@ -5,6 +5,9 @@ module.exports = {
       width: {
         180: '45rem',
       },
+      height: {
+        120: '30rem',
+      },
       colors: {
         'light-grey': '#f0f2ff',
         'light-grey-hov': '#d1d9ff',
