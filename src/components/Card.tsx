@@ -19,7 +19,7 @@ export function Card({
 }: CardProps) {
   return (
     <div className='bg-white flex rounded-lg justify-between p-6 h-44 md:h-36 w-full flex-wrap md:flex-nowrap hover:cursor-pointer mt-5'>
-      <div className='flex order-2 mt-4 md:mt-0 md:order-1 w-16 md:w-9 h-8 md:h-14 bg-light-grey flex-wrap md:flex-nowrap md:flex-col p-2 justify-between md:justify-center items-center rounded-lg hover:bg-light-grey-hov'>
+      <div className='flex order-2 mt-4 md:mt-0 md:order-1 w-16 md:w-10 h-8 md:h-14 bg-light-grey flex-wrap md:flex-nowrap md:flex-col p-2 justify-between md:justify-center items-center rounded-lg hover:bg-light-grey-hov'>
         <FaAngleUp className='text-light-blue' />
         <p className='text-dark-blue font-bold text-xs md:text-sm'>{vote}</p>
       </div>
