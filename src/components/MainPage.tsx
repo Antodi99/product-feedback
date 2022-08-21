@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Card } from './Card'
 import { Category, Header } from './Header'
 import ManageBar from './ManageBar'
+import NoFeedback from './NoFeedback'
 
 type Feedback = {
   id: number
@@ -96,7 +97,8 @@ function MainPage() {
           setSortByFilter={setSortByFilter}
         />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
-          {filteredFeedbackList.map((feedback) => (
+          {!filteredFeedbackList.length && <NoFeedback />}
+          {filteredFeedbackList?.map((feedback) => (
             <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
               <Card
                 title={feedback.title}
