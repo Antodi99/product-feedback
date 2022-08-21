@@ -85,7 +85,7 @@ function MainPage() {
     .sort(sortByVotesAndComments(sortByFilter))
 
   return (
-    <div className='flex flex-col lg:flex-row min-h-screen w-screen lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
+    <div className='flex flex-col lg:flex-row min-h-screen w-full lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
       <Header
         filterByCategory={filterByCategory}
         setFilterByCategory={setFilterByCategory}
