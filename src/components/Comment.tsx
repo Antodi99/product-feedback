@@ -1,6 +1,6 @@
 import Avatar from '../assets/images/users/image-roxanne.jpg'
 
-function Comment() {
+export function Comment() {
   return (
     <div className='bg-white flex rounded-lg p-6 h-fit w-full mt-4'>
       <div className='w-full'>
@@ -32,5 +32,3 @@ function Comment() {
     </div>
   )
 }
-
-export default Comment

@@ -1,4 +1,3 @@
-import MainPage from './components/MainPage'
 import { Routes, Route } from 'react-router-dom'
 import {
   AddFeedbackPage,
@@ -6,6 +5,7 @@ import {
   FeedbackPage,
   RoadmapPage,
 } from './components'
+import MainPage from './pages/MainPage'
 
 const App = () => {
   return (
