@@ -6,6 +6,7 @@ import {
   RoadmapPage,
   MainPage,
 } from './pages'
+import LoginPage from './pages/LoginPage'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Route path='/roadmap' element={<RoadmapPage />} />
       <Route path='/feedback/add' element={<AddFeedbackPage />} />
       <Route path='/feedback/:id/edit' element={<EditFeedbackPage />} />
+      <Route path='/login' element={<LoginPage />} />
     </Routes>
   )
 }
