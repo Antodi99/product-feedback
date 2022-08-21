@@ -7,6 +7,7 @@ import {
   MainPage,
   LoginPage,
 } from './pages'
+import LoginPage from './pages/LoginPage'
 
 const App = () => {
   return (
