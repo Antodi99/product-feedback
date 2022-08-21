@@ -1,8 +1,6 @@
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { AddComment } from './AddComment'
-import { Card } from './Card'
-import Comment from './Comment'
+import { AddComment, Card, Comment } from '../components'
 
 export function FeedbackPage() {
   return (

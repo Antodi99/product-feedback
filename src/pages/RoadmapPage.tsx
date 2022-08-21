@@ -1,6 +1,6 @@
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { FeedBackCard } from './FeedBackCard'
+import { FeedBackCard } from '../components'
 
 export function RoadmapPage() {
   return (

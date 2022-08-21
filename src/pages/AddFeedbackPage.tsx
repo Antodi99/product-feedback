@@ -1,6 +1,6 @@
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import AddFeedback from './AddFeedback'
+import AddFeedback from '../components/AddFeedback'
 
 export function AddFeedbackPage() {
   return (

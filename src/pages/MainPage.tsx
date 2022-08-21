@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Card } from './Card'
-import { Category, Header } from './Header'
-import ManageBar from './ManageBar'
-import NoFeedback from './NoFeedback'
+import { Card, Category, Header } from '../components'
+import ManageBar from '../components/ManageBar'
+import NoFeedback from '../components/NoFeedback'
 
 type Feedback = {
   id: number
@@ -77,7 +76,7 @@ function filterByCategories(activeCategory: string) {
   }
 }
 
-function MainPage() {
+export function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
   const [filterByCategory, setFilterByCategory] = useState('all')
 
@@ -114,5 +113,3 @@ function MainPage() {
     </div>
   )
 }
-
-export default MainPage
