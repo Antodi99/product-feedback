@@ -5,6 +5,7 @@ import {
   FeedbackPage,
   RoadmapPage,
   MainPage,
+  LoginPage,
 } from './pages'
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Route path='/roadmap' element={<RoadmapPage />} />
       <Route path='/feedback/add' element={<AddFeedbackPage />} />
       <Route path='/feedback/:id/edit' element={<EditFeedbackPage />} />
+      <Route path='/login' element={<LoginPage />} />
     </Routes>
   )
 }
