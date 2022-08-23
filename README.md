@@ -9,5 +9,3 @@
 - [Product feedback app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-feedback-app-wbvUYqjR6)
 - [Live demo](https://fem-product-feedback-app.vercel.app/)
 - [Product Feedback REST API](https://github.com/Arthur199212/product-feedback-app)
-
-<!-- https://go-product-feedback.herokuapp.com/api/auth/github -->
