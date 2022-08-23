@@ -2,7 +2,7 @@ import { useSearchParams, Navigate } from 'react-router-dom'
 import LoginMenu from '../components/LoginMenu'
 import { setAccessToken, setRefreshToken } from '../services/auth.service'
 
-function LoginPage() {
+export function LoginPage() {
   const [searchParams] = useSearchParams()
   const accessToken = searchParams.get('access_token')
   const refreshToken = searchParams.get('refresh_token')
@@ -19,5 +19,3 @@ function LoginPage() {
     </div>
   )
 }
-
-export default LoginPage

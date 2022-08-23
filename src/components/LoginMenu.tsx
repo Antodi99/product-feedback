@@ -3,7 +3,7 @@ import { FaGithub } from 'react-icons/fa'
 
 function LoginMenu() {
   return (
-    <div className='bg-white flex flex-col items-center justify-center rounded-xl p-6 h-40 md:h-52 w-80 md:w-[30rem] hover:cursor-pointer mb-8 drop-shadow-xl'>
+    <div className='bg-white flex flex-col items-center justify-center rounded-xl p-6 h-40 md:h-52 w-80 md:w-[30rem] mb-8 drop-shadow-xl'>
       <p className='text-base md:text-xl font-bold mt-4'>
         Welcome To Product Feedback App!
       </p>
