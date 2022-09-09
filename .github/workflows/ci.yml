@@ -31,4 +31,5 @@ jobs:
       - name: Build
         run: npm run build
 
-      # todo: add deploy
+      - name: Deploy
+        run: netlify deploy --auth $NETLIFY_API_KEY --dir dist --site $NETLIFY_PRDUCT_FEEDBACK_SITE_ID
