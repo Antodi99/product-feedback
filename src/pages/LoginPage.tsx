@@ -1,17 +1,21 @@
-import { FaGithub } from 'react-icons/fa'
+import { useSearchParams, Navigate } from 'react-router-dom'
+import LoginMenu from '../components/LoginMenu'
+import { setAccessToken, setRefreshToken } from '../services/auth.service'
 
-function LoginPage() {
+export function LoginPage() {
+  const [searchParams] = useSearchParams()
+  const accessToken = searchParams.get('access_token')
+  const refreshToken = searchParams.get('refresh_token')
+
+  if (accessToken && refreshToken) {
+    setAccessToken(accessToken)
+    setRefreshToken(refreshToken)
+    return <Navigate to='/' />
+  }
+
   return (
-    <div className='bg-white flex flex-col items-center rounded-lg p-6 h-fit w-full hover:cursor-pointer mb-8'>
-      <div className='text-xl font-bold mt-4'>
-        Welcome To Product Feedback App!
-      </div>
-      <button className='mt-8 rounded-xl w-full p-2 md:p-3 bg-black flex items-center justify-center hover:bg-neutral-700 cursor-pointer'>
-        <FaGithub className='text-white text-3xl' />
-        <p className='text-white font-semibold ml-2'>Login with GitHub</p>
-      </button>
+    <div className='justify-center w-full h-screen items-center bg-gradient-to-tr from-sky-400 via-fuchsia-700 to-orange-200 flex'>
+      <LoginMenu />
     </div>
   )
 }
-
-export default LoginPage
