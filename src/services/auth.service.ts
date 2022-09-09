@@ -1,11 +1,15 @@
-let accessToken: string
+// let accessToken: string
 
 export const setAccessToken = (token: string) => {
-  accessToken = token
+  localStorage.setItem('accessToken', token)
+  // accessToken = token
 }
 
-export const getAccessToken = () => accessToken
+export const getAccessToken = () => {
+  // return accessToken
+  return localStorage.getItem('accessToken')
+}
 
 export function setRefreshToken(token: string) {
-  localStorage.setItem('token', token)
+  localStorage.setItem('refreshToken', token)
 }

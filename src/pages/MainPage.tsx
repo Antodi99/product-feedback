@@ -1,44 +1,38 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Category, Header } from '../components'
 import ManageBar from '../components/ManageBar'
 import NoFeedback from '../components/NoFeedback'
+import { Feedback, getAllFeedback } from '../services/feedback.service'
 
-type Feedback = {
-  id: number
-  title: string
-  description: string
-  commentsCount: number
-  category: string
-  votesCount: number
-}
+// const feedbackList: Feedback[] = [
+//   {
+//     id: 1,
+//     title: 'test title',
+//     description: 'some description',
+//     commentsCount: 3,
+//     category: 'feature',
+//     votesCount: 34,
+//   },
+//   {
+//     id: 2,
+//     title: 'test title',
+//     description: 'some description',
+//     commentsCount: 3,
+//     category: 'enhancement',
+//     votesCount: 36,
+//   },
+//   {
+//     id: 3,
+//     title: 'test title',
+//     description: 'some description',
+//     commentsCount: 2,
+//     category: 'ui',
+//     votesCount: 35,
+//   },
+// ]
 
-const feedbackList: Feedback[] = [
-  {
-    id: 1,
-    title: 'test title',
-    description: 'some description',
-    commentsCount: 3,
-    category: 'feature',
-    votesCount: 34,
-  },
-  {
-    id: 2,
-    title: 'test title',
-    description: 'some description',
-    commentsCount: 3,
-    category: 'enhancement',
-    votesCount: 36,
-  },
-  {
-    id: 3,
-    title: 'test title',
-    description: 'some description',
-    commentsCount: 2,
-    category: 'ui',
-    votesCount: 35,
-  },
-]
+
 
 function sortByVotesAndComments(sortByFilter: string) {
   return (a: Feedback, b: Feedback) => {
@@ -79,6 +73,11 @@ function filterByCategories(activeCategory: string) {
 export function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
   const [filterByCategory, setFilterByCategory] = useState('all')
+  const [feedbackList, setFeedbackList] = useState<any[]>([])
+
+  useEffect(() => {
+    getAllFeedback().then((data) => setFeedbackList(data))
+  }, [])
 
   const filteredFeedbackList = feedbackList
     .filter(filterByCategories(filterByCategory))
@@ -101,7 +100,7 @@ export function MainPage() {
             <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
               <Card
                 title={feedback.title}
-                description={feedback.description}
+                description={feedback.body}
                 comment={feedback.commentsCount}
                 category={feedback.category}
                 vote={feedback.votesCount}
