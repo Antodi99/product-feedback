@@ -1,7 +1,6 @@
 import { getAccessToken } from './auth.service'
 import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
-import { FeedbackPage } from '../pages'
 
 export type Feedback = {
   id: number
@@ -36,18 +35,20 @@ export async function getAllFeedback(): Promise<FeedbackWithComments[]> {
         },
       }
     )
-    const commentsRequests = resp.data.map(({ id }) =>
-      axios.get(`${BACKEND_API_URL}/api/comments/?feedbackId=${id}`, {
-        headers: {
-          authorization: `Bearer ${getAccessToken()}`,
-        },
-      })
-    )
-    const commentsList = await Promise.all(commentsRequests)
+    // const commentsRequests = resp.data.map(({ id }: any) =>
+    //   axios.get(`${BACKEND_API_URL}/api/comments/?feedbackId=${id}`, {
+    //     headers: {
+    //       authorization: `Bearer ${getAccessToken()}`,
+    //     },
+    //   })
+    // )
+    // const commentsList = await Promise.all(commentsRequests)
 
-    resp.data.forEach(
-      (feedback, index) => ((feedback as any).comments = commentsList[index])
-    )
+    // resp.data.forEach(
+    //   (feedback: any, index: any) =>
+    //     ((feedback as any).comments = commentsList[index])
+    // )
+
     console.log(resp.data)
     return resp.data as FeedbackWithComments[]
   } catch (error) {
