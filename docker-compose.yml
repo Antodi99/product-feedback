@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ghcr.io/arthur199212/product-feedback:latest
+    env_file:
+      - .env
+    depends_on:
+      - db
+    entrypoint: [ "/app/wait-for.sh", "db:5432", "--", "/app/start.sh" ]
+    command: [ "/app/main" ]
+    volumes:
+      - .env:/app/.env
+    ports:
+      - 8000:8000
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+    volumes:
+      - product-feedback-db:/var/lib/postgresql/data
+    ports:
+      - '${POSTGRES_PORT}:5432'
+
+volumes:
+  product-feedback-db:
+    external: true
