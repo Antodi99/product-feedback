@@ -15,6 +15,8 @@
     "url": "https://github.com/Antodi99/product-feedback/issues"
   },
   "scripts": {
+    "up": "docker compose up -d",
+    "down": "docker compose down",
     "start": "parcel",
     "build": "parcel build && copyfiles -f netlify/_redirects dist",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",

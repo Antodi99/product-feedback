@@ -1,5 +1,5 @@
-import React from 'react'
 import { FaGithub } from 'react-icons/fa'
+import { BACKEND_API_URL } from '../config'
 
 function LoginMenu() {
   return (
@@ -8,7 +8,7 @@ function LoginMenu() {
         Welcome To Product Feedback App!
       </p>
       <a
-        href='https://go-product-feedback.herokuapp.com/api/auth/github'
+        href={`${BACKEND_API_URL}/api/auth/github`}
         className='mt-4 md:mt-8 rounded-xl w-full p-2 md:p-3 bg-black flex items-center justify-center hover:bg-neutral-700 cursor-pointer'
       >
         <FaGithub className='text-white text-3xl' />
