@@ -32,8 +32,6 @@ import { Feedback, getAllFeedback } from '../services/feedback.service'
 //   },
 // ]
 
-
-
 function sortByVotesAndComments(sortByFilter: string) {
   return (a: Feedback, b: Feedback) => {
     switch (sortByFilter) {
@@ -74,9 +72,13 @@ export function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
   const [filterByCategory, setFilterByCategory] = useState('all')
   const [feedbackList, setFeedbackList] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    getAllFeedback().then((data) => setFeedbackList(data))
+    getAllFeedback().then((feedbackList) => {
+      setFeedbackList(feedbackList)
+      setIsLoading(false)
+    })
   }, [])
 
   const filteredFeedbackList = feedbackList
@@ -91,11 +93,13 @@ export function MainPage() {
       />
       <main className='flex flex-col md:mt-8 lg:mt-0 lg:ml-8 w-full lg:w-[45rem]'>
         <ManageBar
+          suggestionsCount={filteredFeedbackList.length}
           sortByFilter={sortByFilter}
           setSortByFilter={setSortByFilter}
         />
         <div className='px-4 pb-4 md:px-0 md:pb-0'>
-          {!filteredFeedbackList.length && <NoFeedback />}
+          {isLoading && 'Loading...'}
+          {!filteredFeedbackList.length && !isLoading && <NoFeedback />}
           {filteredFeedbackList?.map((feedback) => (
             <Link key={feedback.id} to={`/feedback/${feedback.id}`}>
               <Card

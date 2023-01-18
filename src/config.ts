@@ -1,1 +1,1 @@
-export const BACKEND_API_URL = 'https://go-product-feedback.herokuapp.com'
+export const BACKEND_API_URL = 'http://localhost:8000'

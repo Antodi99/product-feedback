@@ -1,6 +1,8 @@
 import { getAccessToken } from './auth.service'
 import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
+import { getAllCommentsByFeedbackId } from './comments.service'
+import { getAllVotesByFeedbackId, Vote } from './votes.service'
 
 export type Feedback = {
   id: number
@@ -35,21 +37,45 @@ export async function getAllFeedback(): Promise<FeedbackWithComments[]> {
         },
       }
     )
-    // const commentsRequests = resp.data.map(({ id }: any) =>
-    //   axios.get(`${BACKEND_API_URL}/api/comments/?feedbackId=${id}`, {
-    //     headers: {
-    //       authorization: `Bearer ${getAccessToken()}`,
-    //     },
-    //   })
-    // )
-    // const commentsList = await Promise.all(commentsRequests)
 
-    // resp.data.forEach(
-    //   (feedback: any, index: any) =>
-    //     ((feedback as any).comments = commentsList[index])
-    // )
+    const feedbackArr = resp.data
+    const feedbackIds: number[] = []
+    feedbackArr.forEach((obj) => {
+      feedbackIds.push(obj.id)
+    })
+    const ids = feedbackIds.join()
 
-    console.log(resp.data)
+    const feedbackCommentsVotes = await Promise.all([
+      getAllCommentsByFeedbackId(ids),
+      getAllVotesByFeedbackId(ids),
+    ])
+
+    const commentsList = feedbackCommentsVotes[0]
+    const commentsObj: Record<number, Comment[]> = {}
+    for (const comment of commentsList) {
+      if (!commentsObj[comment.feedbackId]) {
+        commentsObj[comment.feedbackId] = [comment]
+      } else {
+        commentsObj[comment.feedbackId].push(comment)
+      }
+    }
+
+    const votesList = feedbackCommentsVotes[1]
+    const votesObj: Record<number, Vote[]> = {}
+    for (const vote of votesList) {
+      if (!votesObj[vote.feedbackId]) {
+        votesObj[vote.feedbackId] = [vote]
+      } else {
+        votesObj[vote.feedbackId].push(vote)
+      }
+    }
+
+    for (let i = 0; i < resp.data.length; i++) {
+      const feedback = resp.data[i]
+      feedback.commentsCount = commentsObj[feedback.id]?.length || 0
+      feedback.votesCount = votesObj[feedback.id]?.length || 0
+    }
+
     return resp.data as FeedbackWithComments[]
   } catch (error) {
     console.error(error)
