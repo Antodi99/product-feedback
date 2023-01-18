@@ -24,7 +24,6 @@ export async function getAllCommentsByFeedbackId(
         },
       }
     )
-    console.log(resp.data)
     return resp.data as Comment[]
   } catch (error) {
     console.error(error)

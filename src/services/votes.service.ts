@@ -25,7 +25,6 @@ export async function getAllVotesByFeedbackId(
     console.log(resp.data)
     return resp.data as Vote[]
   } catch (error) {
-    console.error(error)
     return []
   }
 }

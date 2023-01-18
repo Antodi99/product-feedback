@@ -5,33 +5,6 @@ import ManageBar from '../components/ManageBar'
 import NoFeedback from '../components/NoFeedback'
 import { Feedback, getAllFeedback } from '../services/feedback.service'
 
-// const feedbackList: Feedback[] = [
-//   {
-//     id: 1,
-//     title: 'test title',
-//     description: 'some description',
-//     commentsCount: 3,
-//     category: 'feature',
-//     votesCount: 34,
-//   },
-//   {
-//     id: 2,
-//     title: 'test title',
-//     description: 'some description',
-//     commentsCount: 3,
-//     category: 'enhancement',
-//     votesCount: 36,
-//   },
-//   {
-//     id: 3,
-//     title: 'test title',
-//     description: 'some description',
-//     commentsCount: 2,
-//     category: 'ui',
-//     votesCount: 35,
-//   },
-// ]
-
 function sortByVotesAndComments(sortByFilter: string) {
   return (a: Feedback, b: Feedback) => {
     switch (sortByFilter) {
