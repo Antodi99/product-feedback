@@ -1,8 +1,10 @@
 import { getAccessToken } from './auth.service'
 import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
-import { getAllCommentsByFeedbackId } from './comments.service'
+import { getAllCommentsByFeedbackId, Comment } from './comments.service'
 import { getAllVotesByFeedbackId, Vote } from './votes.service'
+
+export type FeedbackStatus = 'idea' | 'defined' | 'in-progress' | 'done'
 
 export type Feedback = {
   id: number
@@ -11,23 +13,10 @@ export type Feedback = {
   commentsCount: number
   category: string
   votesCount: number
+  status: FeedbackStatus
 }
 
-type Comment = {
-  body: string
-  createdAt: string
-  feedbackId: number
-  id: number
-  parentId: number
-  updatedAt: string
-  userId: number
-}
-
-type FeedbackWithComments = Feedback & {
-  comments: Comment[]
-}
-
-export async function getAllFeedback(): Promise<FeedbackWithComments[]> {
+export async function getAllFeedback(): Promise<Feedback[]> {
   try {
     const resp = await axios.get<Feedback[]>(
       `${BACKEND_API_URL}/api/feedback/`,
@@ -43,14 +32,12 @@ export async function getAllFeedback(): Promise<FeedbackWithComments[]> {
     feedbackArr.forEach((obj) => {
       feedbackIds.push(obj.id)
     })
-    const ids = feedbackIds.join()
 
-    const feedbackCommentsVotes = await Promise.all([
-      getAllCommentsByFeedbackId(ids),
-      getAllVotesByFeedbackId(ids),
+    const [commentsList, votesList] = await Promise.all([
+      getAllCommentsByFeedbackId(feedbackIds),
+      getAllVotesByFeedbackId(feedbackIds),
     ])
 
-    const commentsList = feedbackCommentsVotes[0]
     const commentsObj: Record<number, Comment[]> = {}
     for (const comment of commentsList) {
       if (!commentsObj[comment.feedbackId]) {
@@ -60,7 +47,6 @@ export async function getAllFeedback(): Promise<FeedbackWithComments[]> {
       }
     }
 
-    const votesList = feedbackCommentsVotes[1]
     const votesObj: Record<number, Vote[]> = {}
     for (const vote of votesList) {
       if (!votesObj[vote.feedbackId]) {
@@ -70,13 +56,13 @@ export async function getAllFeedback(): Promise<FeedbackWithComments[]> {
       }
     }
 
-    for (let i = 0; i < resp.data.length; i++) {
-      const feedback = resp.data[i]
+    for (let i = 0; i < feedbackArr.length; i++) {
+      const feedback = feedbackArr[i]
       feedback.commentsCount = commentsObj[feedback.id]?.length || 0
       feedback.votesCount = votesObj[feedback.id]?.length || 0
     }
 
-    return resp.data as FeedbackWithComments[]
+    return feedbackArr as Feedback[]
   } catch (error) {
     console.error(error)
     return []

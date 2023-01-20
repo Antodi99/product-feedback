@@ -61,6 +61,7 @@ export function MainPage() {
   return (
     <div className='flex flex-col lg:flex-row min-h-screen w-full lg:justify-center md:p-11 lg:p-0 lg:pt-20'>
       <Header
+        feedbackList={filteredFeedbackList}
         filterByCategory={filterByCategory}
         setFilterByCategory={setFilterByCategory}
       />

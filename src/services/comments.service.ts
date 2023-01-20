@@ -13,11 +13,11 @@ export type Comment = {
 }
 
 export async function getAllCommentsByFeedbackId(
-  feedbackIds: string
+  feedbackIds: number[]
 ): Promise<Comment[]> {
   try {
     const resp = await axios.get(
-      `${BACKEND_API_URL}/api/comments/?feedbackId=${feedbackIds}`,
+      `${BACKEND_API_URL}/api/comments/?feedbackId=${feedbackIds.join()}`,
       {
         headers: {
           authorization: `Bearer ${getAccessToken()}`,

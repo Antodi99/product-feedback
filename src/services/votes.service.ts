@@ -11,18 +11,17 @@ export type Vote = {
 }
 
 export async function getAllVotesByFeedbackId(
-  feedbackId: string
+  feedbackIds: number[]
 ): Promise<Vote[]> {
   try {
     const resp = await axios.get(
-      `${BACKEND_API_URL}/api/votes/?feedbackId=${feedbackId}`,
+      `${BACKEND_API_URL}/api/votes/?feedbackId=${feedbackIds.join()}`,
       {
         headers: {
           authorization: `Bearer ${getAccessToken()}`,
         },
       }
     )
-    console.log(resp.data)
     return resp.data as Vote[]
   } catch (error) {
     return []

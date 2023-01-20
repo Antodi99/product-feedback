@@ -134,4 +134,4 @@ dist
 .pnp.*
 
 # Local Netlify folder
-.netlify
+.netlify/
