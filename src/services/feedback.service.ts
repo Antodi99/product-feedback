@@ -3,6 +3,7 @@ import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
 import { getAllCommentsByFeedbackId, Comment } from './comments.service'
 import { getAllVotesByFeedbackId, Vote } from './votes.service'
+import toNumber from 'lodash/toNumber'
 
 export type FeedbackStatus = 'idea' | 'defined' | 'in-progress' | 'done'
 
@@ -10,9 +11,9 @@ export type Feedback = {
   id: number
   title: string
   body: string
-  commentsCount: number
+  comments: Comment[]
   category: string
-  votesCount: number
+  votes: Vote[]
   status: FeedbackStatus
 }
 
@@ -58,13 +59,52 @@ export async function getAllFeedback(): Promise<Feedback[]> {
 
     for (let i = 0; i < feedbackArr.length; i++) {
       const feedback = feedbackArr[i]
-      feedback.commentsCount = commentsObj[feedback.id]?.length || 0
-      feedback.votesCount = votesObj[feedback.id]?.length || 0
+      feedback.comments = commentsObj[feedback.id] || []
+      feedback.votes = votesObj[feedback.id] || []
     }
 
     return feedbackArr as Feedback[]
   } catch (error) {
     console.error(error)
     return []
+  }
+}
+
+export async function getFeedbackById(
+  id?: string
+): Promise<Feedback | undefined> {
+  if (id === undefined) {
+    return undefined
+  }
+
+  const idNumber = toNumber(id)
+
+  if (isNaN(idNumber)) {
+    return undefined
+  }
+
+  try {
+    const resp = await axios.get<Feedback>(
+      `${BACKEND_API_URL}/api/feedback/${id}`,
+      {
+        headers: {
+          authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    )
+
+    const feedback = resp.data
+    const [commentsList, votesList] = await Promise.all([
+      getAllCommentsByFeedbackId([idNumber]),
+      getAllVotesByFeedbackId([idNumber]),
+    ])
+
+    feedback.comments = commentsList || []
+    feedback.votes = votesList || []
+
+    return feedback
+  } catch (error) {
+    console.error(error)
+    return undefined
   }
 }

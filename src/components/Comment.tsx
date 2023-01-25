@@ -1,6 +1,12 @@
 import Avatar from '../assets/images/users/image-roxanne.jpg'
 
-export function Comment() {
+export type CommentCard = {
+  name: string
+  userName: string
+  body: string
+}
+
+export function Comment({ name, userName, body }: CommentCard) {
   return (
     <div className='bg-white flex rounded-lg p-6 h-fit w-full mt-4'>
       <div className='w-full'>
@@ -12,11 +18,9 @@ export function Comment() {
             ></img>
             <div className='flex flex-col ml-2'>
               <p className='text-xs md:text-base text-dark-blue font-bold'>
-                Roxanne Travis
+                {name}
               </p>
-              <p className='text-xs md:text-base text-dark-blue'>
-                @peppersprime32
-              </p>
+              <p className='text-xs md:text-base text-dark-blue'>{userName}</p>
             </div>
           </div>
           <button className='text-xs md:text-base text-light-blue font-bold'>
@@ -25,7 +29,7 @@ export function Comment() {
         </div>
         <div>
           <p className='text-dark-blue text-xs md:text-base lg:text-lg mt-6'>
-            I had learnt 5min python lesson. IT&apos;S AWESOME!
+            {body}
           </p>
         </div>
       </div>

@@ -1,8 +1,24 @@
+import { useEffect, useState } from 'react'
 import { FaAngleLeft } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
+import { Feedback, getFeedbackById } from '../services/feedback.service'
 
 export function FeedbackPage() {
+  const [feedback, setFeedback] = useState<Feedback | undefined>()
+  const [isLoading, setIsLoading] = useState(true)
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    getFeedbackById(id).then((feedback) => {
+      setFeedback(feedback)
+      setIsLoading(false)
+    })
+  }, [])
+
+  console.log('feedback', feedback)
+
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
       <div className='flex justify-between items-center'>
@@ -19,15 +35,21 @@ export function FeedbackPage() {
         </Link>
       </div>
       <main className=''>
-        <Card
-          title={''}
-          description={''}
-          comment={0}
-          category={''}
-          vote={0}
-        ></Card>
-        <Comment></Comment>
-        <AddComment></AddComment>
+        {!feedback && isLoading && 'Loading...'}
+        {!feedback && !isLoading && 'Not found'}
+        {feedback && (
+          <>
+            <Card
+              title={feedback.title}
+              description={feedback.body}
+              comment={feedback.comments.length}
+              category={feedback.category}
+              vote={feedback.votes.length}
+            ></Card>
+            <Comment name={''} userName={''} body={''}></Comment>
+            <AddComment></AddComment>
+          </>
+        )}
       </main>
     </div>
   )
