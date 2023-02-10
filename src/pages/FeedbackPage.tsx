@@ -3,16 +3,22 @@ import { FaAngleLeft } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
 import { Feedback, getFeedbackById } from '../services/feedback.service'
+import { Comment as TComment } from '../services/comments.service'
+import { getAllUsersById, User } from '../services/user.service'
+import { groupBy } from 'lodash'
 
 export function FeedbackPage() {
   const [feedback, setFeedback] = useState<Feedback | undefined>()
+  const [users, setUsers] = useState<Record<number, User[]> | undefined>()
   const [isLoading, setIsLoading] = useState(true)
 
   const { id } = useParams()
 
   useEffect(() => {
-    getFeedbackById(id).then((feedback) => {
+    getFeedbackById(id).then(async (feedback) => {
+      const users = await getUsersByComments(feedback?.comments || [])
       setFeedback(feedback)
+      setUsers(users)
       setIsLoading(false)
     })
   }, [])
@@ -46,11 +52,31 @@ export function FeedbackPage() {
               category={feedback.category}
               vote={feedback.votes.length}
             ></Card>
-            <Comment name={''} userName={''} body={''}></Comment>
+
+
+            {feedback.comments && feedback.comments?.map((comment) => {
+              console.log(users, "users")
+              const user = users![comment.userId][0]
+              return <Comment name={user.name} userName={user.user_name} body={comment.body}></Comment>
+            })}
             <AddComment></AddComment>
           </>
         )}
       </main>
     </div>
   )
+}
+
+async function getUsersByComments(comments: TComment[]) {
+  if (comments.length === 0) {
+    return []
+  }
+
+  const userIds = new Set<number>();
+  for (let comment of comments) {
+    userIds.add(comment.userId)
+  }
+
+  const user = await getAllUsersById([...userIds])
+  return groupBy(user, 'id') as Record<string, User[]>
 }
