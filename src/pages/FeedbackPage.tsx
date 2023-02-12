@@ -51,10 +51,19 @@ export function FeedbackPage() {
               vote={feedback.votes.length}
             ></Card>
 
-            {feedback.comments && feedback.comments?.map((comment) => {
-              const user = users![comment.userId][0]
-              return <Comment key={comment.id} name={user.name} userName={user.user_name} body={comment.body} avatar={user.avatar_url}></Comment>
-            })}
+            {feedback.comments &&
+              feedback.comments?.map((comment) => {
+                const user = users![comment.userId][0]
+                return (
+                  <Comment
+                    key={comment.id}
+                    name={user.name}
+                    userName={user.user_name}
+                    body={comment.body}
+                    avatar={user.avatar_url}
+                  ></Comment>
+                )
+              })}
             <AddComment></AddComment>
           </>
         )}
@@ -68,8 +77,8 @@ async function getUsersByComments(comments: TComment[]) {
     return []
   }
 
-  const userIds = new Set<number>();
-  for (let comment of comments) {
+  const userIds = new Set<number>()
+  for (const comment of comments) {
     userIds.add(comment.userId)
   }
 

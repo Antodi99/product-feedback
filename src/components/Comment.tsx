@@ -1,5 +1,3 @@
-import Avatar from '../assets/images/users/image-roxanne.jpg'
-
 export type CommentCard = {
   name: string
   userName: string

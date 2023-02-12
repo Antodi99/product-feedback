@@ -4,7 +4,6 @@ import { BACKEND_API_URL } from '../config'
 import { getAllCommentsByFeedbackId, Comment } from './comments.service'
 import { getAllVotesByFeedbackId, Vote } from './votes.service'
 import toNumber from 'lodash/toNumber'
-import { getAllUsersById } from './user.service'
 
 export type FeedbackStatus = 'idea' | 'defined' | 'in-progress' | 'done'
 
@@ -102,7 +101,6 @@ export async function getFeedbackById(
 
     feedback.comments = commentsList || []
     feedback.votes = votesList || []
-
 
     return feedback
   } catch (error) {
