@@ -23,8 +23,6 @@ export function FeedbackPage() {
     })
   }, [])
 
-  console.log('feedback', feedback)
-
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
       <div className='flex justify-between items-center'>
@@ -53,11 +51,9 @@ export function FeedbackPage() {
               vote={feedback.votes.length}
             ></Card>
 
-
             {feedback.comments && feedback.comments?.map((comment) => {
-              console.log(users, "users")
               const user = users![comment.userId][0]
-              return <Comment name={user.name} userName={user.user_name} body={comment.body}></Comment>
+              return <Comment key={comment.id} name={user.name} userName={user.user_name} body={comment.body} avatar={user.avatar_url}></Comment>
             })}
             <AddComment></AddComment>
           </>

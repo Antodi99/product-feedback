@@ -17,7 +17,7 @@ export async function getAllUsersById(
 ): Promise<User[]> {
     try {
         const resp = await axios.get(
-            `${BACKEND_API_URL}/api/users?userId=${userIds.join()}`,
+            `${BACKEND_API_URL}/api/users/?userId=${userIds.join()}`,
             {
                 headers: {
                     authorization: `Bearer ${getAccessToken()}`,
