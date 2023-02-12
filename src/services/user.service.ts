@@ -27,3 +27,16 @@ export async function getAllUsersById(userIds: number[]): Promise<User[]> {
     return []
   }
 }
+
+export async function getCurrentUser(): Promise<User | undefined> {
+  try {
+    const resp = await axios.get(`${BACKEND_API_URL}/api/users/me`, {
+      headers: {
+        authorization: `Bearer ${getAccessToken()}`,
+      },
+    })
+    return resp.data
+  } catch (error) {
+    return undefined
+  }
+}

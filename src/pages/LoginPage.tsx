@@ -8,6 +8,8 @@ export function LoginPage() {
   const refreshToken = searchParams.get('refresh_token')
 
   if (accessToken && refreshToken) {
+    console.log(accessToken)
+    console.log(refreshToken)
     setAccessToken(accessToken)
     setRefreshToken(refreshToken)
     return <Navigate to='/' />
