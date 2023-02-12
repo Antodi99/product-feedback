@@ -9,13 +9,13 @@ function sortByVotesAndComments(sortByFilter: string) {
   return (a: Feedback, b: Feedback) => {
     switch (sortByFilter) {
       case 'Most Upvotes':
-        return b.votesCount - a.votesCount
+        return b.votes.length - a.votes.length
       case 'Least Upvotes':
-        return a.votesCount - b.votesCount
+        return a.votes.length - b.votes.length
       case 'Most Comments':
-        return b.commentsCount - a.commentsCount
+        return b.comments.length - a.comments.length
       case 'Least Comments':
-        return a.commentsCount - b.commentsCount
+        return a.comments.length - b.comments.length
       default:
         return a.id - b.id
     }
@@ -44,7 +44,7 @@ function filterByCategories(activeCategory: string) {
 export function MainPage() {
   const [sortByFilter, setSortByFilter] = useState('Most Upvotes')
   const [filterByCategory, setFilterByCategory] = useState('all')
-  const [feedbackList, setFeedbackList] = useState<any[]>([])
+  const [feedbackList, setFeedbackList] = useState<Feedback[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -79,9 +79,9 @@ export function MainPage() {
               <Card
                 title={feedback.title}
                 description={feedback.body}
-                comment={feedback.commentsCount}
+                comment={feedback.comments.length}
                 category={feedback.category}
-                vote={feedback.votesCount}
+                vote={feedback.votes.length}
               ></Card>
             </Link>
           ))}
