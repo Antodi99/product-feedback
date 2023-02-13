@@ -12,10 +12,12 @@ import { getCurrentUser } from './services/user.service'
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getCurrentUser().then((user) => {
       setIsLoggedIn(!!user)
+      setIsLoading(false)
     })
   }, [])
 
@@ -24,7 +26,7 @@ const App = () => {
       <Route
         path='/'
         element={
-          <AuthRequired isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <MainPage />
           </AuthRequired>
         }
@@ -32,7 +34,7 @@ const App = () => {
       <Route
         path='/feedback/:id'
         element={
-          <AuthRequired isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <FeedbackPage />
           </AuthRequired>
         }
@@ -40,7 +42,7 @@ const App = () => {
       <Route
         path='/roadmap'
         element={
-          <AuthRequired isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <RoadmapPage />
           </AuthRequired>
         }
@@ -48,7 +50,7 @@ const App = () => {
       <Route
         path='/feedback/add'
         element={
-          <AuthRequired isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <AddFeedbackPage />
           </AuthRequired>
         }
@@ -56,7 +58,7 @@ const App = () => {
       <Route
         path='/feedback/:id/edit'
         element={
-          <AuthRequired isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
             <EditFeedbackPage />
           </AuthRequired>
         }
@@ -71,9 +73,11 @@ export default App
 type AuthRequiredProps = {
   children: ReactNode
   isLoggedIn: boolean
+  isLoading: boolean
 }
 
-function AuthRequired({ children, isLoggedIn }: AuthRequiredProps) {
+function AuthRequired({ children, isLoggedIn, isLoading }: AuthRequiredProps) {
+  if (isLoading) return <div>Loading...</div>
   if (!isLoggedIn) return <Navigate to='/login' />
-  return children as any
+  return children as JSX.Element
 }

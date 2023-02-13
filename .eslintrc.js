@@ -25,4 +25,12 @@ module.exports = {
     },
   },
   ignorePatterns: ['dist', 'node_modules', '.parcel-cache'],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
 }
