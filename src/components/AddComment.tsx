@@ -3,11 +3,6 @@ import { createComment } from '../services/comments.service'
 
 const MAX_INPUT_LENGTH = 250
 
-// type AddCommentProps = {
-//   text: string
-//   setText: Function
-// }
-
 export function AddComment({ id }: any) {
   const [text, setText] = useState('')
 
