@@ -64,7 +64,7 @@ export function FeedbackPage() {
                   ></Comment>
                 )
               })}
-            <AddComment></AddComment>
+            <AddComment id={feedback.id}></AddComment>
           </>
         )}
       </main>

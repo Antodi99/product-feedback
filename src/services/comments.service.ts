@@ -30,3 +30,18 @@ export async function getAllCommentsByFeedbackId(
     return []
   }
 }
+
+export async function createComment(text: any, id: any) {
+  try {
+    const resp = await axios.post(`${BACKEND_API_URL}/api/comments/`, {
+      headers: {
+        authorization: `Bearer ${getAccessToken()}`,
+      },
+      body: text,
+      feedbackId: id,
+    })
+    console.log(resp.data)
+  } catch (error) {
+    console.error(error)
+  }
+}
