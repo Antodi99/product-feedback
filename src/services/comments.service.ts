@@ -33,7 +33,7 @@ export async function getAllCommentsByFeedbackId(
 
 export async function createComment(text: string, id: number) {
   try {
-    const resp = await axios.post(
+    await axios.post(
       `${BACKEND_API_URL}/api/comments/`,
       {
         body: text,
@@ -45,7 +45,6 @@ export async function createComment(text: string, id: number) {
         },
       }
     )
-    console.log(resp.data)
   } catch (error) {
     console.error(error)
   }

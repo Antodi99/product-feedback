@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import { createComment } from '../services/comments.service'
 
+type AddCommentProps = {
+  id: string
+  refreshComments: () => Promise<void>
+}
+
 const MAX_INPUT_LENGTH = 250
 
-export function AddComment({ id }: any) {
+export function AddComment({ id, refreshComments }: AddCommentProps) {
   const [text, setText] = useState('')
 
-  const postData = (e: any) => {
-    e.preventDefault()
-    createComment(text, id)
+  const handleAddComment = async () => {
+    await createComment(text, Number(id))
+    refreshComments()
   }
 
   return (
@@ -26,7 +31,7 @@ export function AddComment({ id }: any) {
       <div className='flex justify-between mt-4 items-center text-dark-blue text-sm'>
         <p>{MAX_INPUT_LENGTH - text.length} Characters left</p>
         <div
-          onClick={postData}
+          onClick={handleAddComment}
           className='rounded-xl p-3 bg-fuchsia-500 w-fit md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'
         >
           <p className='text-white font-bold text-xs'>Post Comment</p>

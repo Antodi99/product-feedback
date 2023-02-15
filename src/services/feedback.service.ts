@@ -93,16 +93,7 @@ export async function getFeedbackById(
       }
     )
 
-    const feedback = resp.data
-    const [commentsList, votesList] = await Promise.all([
-      getAllCommentsByFeedbackId([idNumber]),
-      getAllVotesByFeedbackId([idNumber]),
-    ])
-
-    feedback.comments = commentsList || []
-    feedback.votes = votesList || []
-
-    return feedback
+    return resp.data
   } catch (error) {
     console.error(error)
     return undefined
