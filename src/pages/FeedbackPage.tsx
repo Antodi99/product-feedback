@@ -3,25 +3,38 @@ import { FaAngleLeft } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
 import { Feedback, getFeedbackById } from '../services/feedback.service'
-import { Comment as TComment } from '../services/comments.service'
+import {
+  Comment as TComment,
+  getAllCommentsByFeedbackId,
+} from '../services/comments.service'
 import { getAllUsersById, User } from '../services/user.service'
 import { groupBy } from 'lodash'
+import { getAllVotesByFeedbackId, Vote } from '../services/votes.service'
 
 export function FeedbackPage() {
   const [feedback, setFeedback] = useState<Feedback | undefined>()
+  const [comments, setComments] = useState<TComment[] | undefined>()
+  const [votes, setVotes] = useState<Vote[] | undefined>()
   const [users, setUsers] = useState<Record<number, User[]> | undefined>()
   const [isLoading, setIsLoading] = useState(true)
 
   const { id } = useParams()
 
   useEffect(() => {
-    getFeedbackById(id).then(async (feedback) => {
-      const users = await getUsersByComments(feedback?.comments || [])
-      setFeedback(feedback)
+    fetchDataByFeedbackId(id).then(async (data) => {
+      const users = await getUsersByComments(data[1] || [])
+      setFeedback(data[0])
+      setComments(data[1])
+      setVotes(data[2])
       setUsers(users)
       setIsLoading(false)
     })
   }, [])
+
+  const refreshComments = async () => {
+    const comments = await getAllCommentsByFeedbackId([Number(id)])
+    setComments(comments)
+  }
 
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
@@ -46,13 +59,13 @@ export function FeedbackPage() {
             <Card
               title={feedback.title}
               description={feedback.body}
-              comment={feedback.comments.length}
+              comment={comments?.length || 0}
               category={feedback.category}
-              vote={feedback.votes.length}
+              vote={votes?.length || 0}
             ></Card>
 
-            {feedback.comments &&
-              feedback.comments?.map((comment) => {
+            {comments?.length &&
+              comments?.map((comment) => {
                 const user = users![comment.userId][0]
                 return (
                   <Comment
@@ -64,7 +77,10 @@ export function FeedbackPage() {
                   ></Comment>
                 )
               })}
-            <AddComment></AddComment>
+            <AddComment
+              id={String(feedback.id)}
+              refreshComments={refreshComments}
+            ></AddComment>
           </>
         )}
       </main>
@@ -84,4 +100,13 @@ async function getUsersByComments(comments: TComment[]) {
 
   const user = await getAllUsersById([...userIds])
   return groupBy(user, 'id') as Record<string, User[]>
+}
+
+async function fetchDataByFeedbackId(id?: string) {
+  const resp = await Promise.all([
+    getFeedbackById(id),
+    getAllCommentsByFeedbackId([Number(id)]),
+    getAllVotesByFeedbackId([Number(id)]),
+  ])
+  return resp
 }
