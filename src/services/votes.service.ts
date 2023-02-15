@@ -27,3 +27,33 @@ export async function getAllVotesByFeedbackId(
     return []
   }
 }
+
+export async function createVote(id: number) {
+  try {
+    await axios.post(
+      `${BACKEND_API_URL}/api/votes/`,
+      {
+        feedbackId: id,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    )
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function deleteVote(id: number) {
+  try {
+    await axios.delete(`${BACKEND_API_URL}/api/votes/${id}`, {
+      headers: {
+        authorization: `Bearer ${getAccessToken()}`,
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}

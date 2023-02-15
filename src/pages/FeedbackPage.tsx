@@ -36,6 +36,13 @@ export function FeedbackPage() {
     setComments(comments)
   }
 
+  const refreshVotes = async () => {
+    const votes = await getAllVotesByFeedbackId([Number(id)])
+    setVotes(votes)
+  }
+
+  console.log(votes)
+
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
       <div className='flex justify-between items-center'>
@@ -62,6 +69,9 @@ export function FeedbackPage() {
               comment={comments?.length || 0}
               category={feedback.category}
               vote={votes?.length || 0}
+              id={String(feedback.id)}
+              refreshVotes={refreshVotes}
+              votes={votes}
             ></Card>
 
             {comments?.length &&

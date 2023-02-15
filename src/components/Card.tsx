@@ -1,5 +1,7 @@
 import clsx from 'clsx'
+import { useState } from 'react'
 import { FaAngleUp, FaComment } from 'react-icons/fa'
+import { createVote, deleteVote } from '../services/votes.service'
 import { Category } from './Header'
 
 type CardProps = {
@@ -8,6 +10,9 @@ type CardProps = {
   comment: number
   category: string
   vote: number
+  id: string
+  refreshVotes: () => Promise<void>
+  votes: any
 }
 
 export function Card({
@@ -16,10 +21,30 @@ export function Card({
   comment,
   category,
   vote,
+  id,
+  refreshVotes,
+  votes,
 }: CardProps) {
+  const [voteActive, setVoteActive] = useState(false)
+
+  const handleChangeVote = async () => {
+    if (!voteActive) {
+      await createVote(Number(id))
+      refreshVotes()
+      setVoteActive(true)
+    } else if (voteActive) {
+      await deleteVote(Number(votes[votes.length - 1]?.id))
+      refreshVotes()
+      setVoteActive(false)
+    }
+  }
+
   return (
     <div className='bg-white flex rounded-lg justify-between p-6 h-44 md:h-36 w-full flex-wrap md:flex-nowrap hover:cursor-pointer mt-5'>
-      <div className='flex order-2 mt-4 md:mt-0 md:order-1 w-16 md:w-10 h-8 md:h-14 bg-light-grey flex-wrap md:flex-nowrap md:flex-col p-2 justify-between md:justify-center items-center rounded-lg hover:bg-light-grey-hov'>
+      <div
+        onClick={handleChangeVote}
+        className='flex order-2 mt-4 md:mt-0 md:order-1 w-16 md:w-10 h-8 md:h-14 bg-light-grey flex-wrap md:flex-nowrap md:flex-col p-2 justify-between md:justify-center items-center rounded-lg hover:bg-light-grey-hov'
+      >
         <FaAngleUp className='text-light-blue' />
         <p className='text-dark-blue font-bold text-xs md:text-sm'>{vote}</p>
       </div>
