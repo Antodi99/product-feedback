@@ -28,12 +28,12 @@ export async function getAllVotesByFeedbackId(
   }
 }
 
-export async function createVote(id: number) {
+export async function toggleVote(feedbackId: number) {
   try {
     await axios.post(
-      `${BACKEND_API_URL}/api/votes/`,
+      `${BACKEND_API_URL}/api/votes/toggle`,
       {
-        feedbackId: id,
+        feedbackId,
       },
       {
         headers: {

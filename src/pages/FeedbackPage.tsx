@@ -9,9 +9,17 @@ import {
 } from '../services/comments.service'
 import { getAllUsersById, User } from '../services/user.service'
 import { groupBy } from 'lodash'
-import { getAllVotesByFeedbackId, Vote } from '../services/votes.service'
+import {
+  getAllVotesByFeedbackId,
+  toggleVote,
+  Vote,
+} from '../services/votes.service'
 
-export function FeedbackPage() {
+type FeedbackPageProps = {
+  user?: User
+}
+
+export function FeedbackPage({ user }: FeedbackPageProps) {
   const [feedback, setFeedback] = useState<Feedback | undefined>()
   const [comments, setComments] = useState<TComment[] | undefined>()
   const [votes, setVotes] = useState<Vote[] | undefined>()
@@ -41,7 +49,14 @@ export function FeedbackPage() {
     setVotes(votes)
   }
 
+  const handleToggleVote = async () => {
+    await toggleVote(Number(id))
+    refreshVotes()
+  }
+
+  const usersVote = votes?.find((vote) => vote.userId === user?.id)
   console.log(votes)
+  console.log(user)
 
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
@@ -69,9 +84,8 @@ export function FeedbackPage() {
               comment={comments?.length || 0}
               category={feedback.category}
               vote={votes?.length || 0}
-              id={String(feedback.id)}
-              refreshVotes={refreshVotes}
-              votes={votes}
+              handleToggleVote={handleToggleVote}
+              isVoted={Boolean(usersVote)}
             ></Card>
 
             {comments?.length &&

@@ -8,15 +8,15 @@ import {
   MainPage,
   LoginPage,
 } from './pages'
-import { getCurrentUser } from './services/user.service'
+import { getCurrentUser, User } from './services/user.service'
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true)
+  const [user, setUser] = useState<User | undefined>()
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getCurrentUser().then((user) => {
-      setIsLoggedIn(!!user)
+      setUser(user)
       setIsLoading(false)
     })
   }, [])
@@ -26,7 +26,7 @@ const App = () => {
       <Route
         path='/'
         element={
-          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
             <MainPage />
           </AuthRequired>
         }
@@ -34,15 +34,15 @@ const App = () => {
       <Route
         path='/feedback/:id'
         element={
-          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
-            <FeedbackPage />
+          <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
+            <FeedbackPage user={user} />
           </AuthRequired>
         }
       />
       <Route
         path='/roadmap'
         element={
-          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
             <RoadmapPage />
           </AuthRequired>
         }
@@ -50,7 +50,7 @@ const App = () => {
       <Route
         path='/feedback/add'
         element={
-          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
             <AddFeedbackPage />
           </AuthRequired>
         }
@@ -58,7 +58,7 @@ const App = () => {
       <Route
         path='/feedback/:id/edit'
         element={
-          <AuthRequired isLoading={isLoading} isLoggedIn={isLoggedIn}>
+          <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
             <EditFeedbackPage />
           </AuthRequired>
         }
