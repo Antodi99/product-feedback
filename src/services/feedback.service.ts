@@ -1,8 +1,8 @@
 import { getAccessToken } from './auth.service'
 import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
-import { getAllCommentsByFeedbackId, Comment } from './comments.service'
-import { getAllVotesByFeedbackId, Vote } from './votes.service'
+import { Comment } from './comments.service'
+import { Vote } from './votes.service'
 import toNumber from 'lodash/toNumber'
 
 export type FeedbackStatus = 'idea' | 'defined' | 'in-progress' | 'done'
@@ -28,42 +28,7 @@ export async function getAllFeedback(): Promise<Feedback[]> {
       }
     )
 
-    const feedbackArr = resp.data
-    const feedbackIds: number[] = []
-    feedbackArr.forEach((obj) => {
-      feedbackIds.push(obj.id)
-    })
-
-    const [commentsList, votesList] = await Promise.all([
-      getAllCommentsByFeedbackId(feedbackIds),
-      getAllVotesByFeedbackId(feedbackIds),
-    ])
-
-    const commentsObj: Record<number, Comment[]> = {}
-    for (const comment of commentsList) {
-      if (!commentsObj[comment.feedbackId]) {
-        commentsObj[comment.feedbackId] = [comment]
-      } else {
-        commentsObj[comment.feedbackId].push(comment)
-      }
-    }
-
-    const votesObj: Record<number, Vote[]> = {}
-    for (const vote of votesList) {
-      if (!votesObj[vote.feedbackId]) {
-        votesObj[vote.feedbackId] = [vote]
-      } else {
-        votesObj[vote.feedbackId].push(vote)
-      }
-    }
-
-    for (let i = 0; i < feedbackArr.length; i++) {
-      const feedback = feedbackArr[i]
-      feedback.comments = commentsObj[feedback.id] || []
-      feedback.votes = votesObj[feedback.id] || []
-    }
-
-    return feedbackArr as Feedback[]
+    return resp.data
   } catch (error) {
     console.error(error)
     return []

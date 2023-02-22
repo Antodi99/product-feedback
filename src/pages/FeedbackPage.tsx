@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { groupBy } from 'lodash'
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
@@ -8,7 +9,6 @@ import {
   getAllCommentsByFeedbackId,
 } from '../services/comments.service'
 import { getAllUsersById, User } from '../services/user.service'
-import { groupBy } from 'lodash'
 import {
   getAllVotesByFeedbackId,
   toggleVote,
@@ -55,8 +55,6 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
   }
 
   const usersVote = votes?.find((vote) => vote.userId === user?.id)
-  console.log(votes)
-  console.log(user)
 
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>

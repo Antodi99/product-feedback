@@ -24,7 +24,6 @@ export function Card({
   const voteColor = isVoted ? 'bg-light-blue' : 'bg-light-grey'
   const voteFontColor = isVoted ? 'text-white' : 'text-light-blue'
   const voteAngleColor = isVoted ? 'text-white' : 'text-dark-blue'
-  console.log(voteColor)
   return (
     <div className='bg-white flex rounded-lg justify-between p-6 h-44 md:h-36 w-full flex-wrap md:flex-nowrap hover:cursor-pointer mt-5'>
       <div

@@ -27,7 +27,7 @@ const App = () => {
         path='/'
         element={
           <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
-            <MainPage />
+            <MainPage user={user} />
           </AuthRequired>
         }
       />
