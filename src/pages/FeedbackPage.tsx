@@ -77,11 +77,9 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
         {feedback && (
           <>
             <Card
-              title={feedback.title}
-              description={feedback.body}
-              comment={comments?.length || 0}
-              category={feedback.category}
-              vote={votes?.length || 0}
+              feedback={feedback}
+              comments={comments?.length || 0}
+              votes={votes?.length || 0}
               handleToggleVote={handleToggleVote}
               isVoted={Boolean(usersVote)}
             ></Card>

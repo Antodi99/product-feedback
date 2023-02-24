@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { groupBy } from 'lodash'
-import { Header } from '../../components'
+import { Card, Header } from '../../components'
 import ManageBar from '../../components/ManageBar'
 import NoFeedback from '../../components/NoFeedback'
 import {
@@ -13,7 +13,6 @@ import {
   toggleVote,
   Vote,
 } from '../../services/votes.service'
-import { Card } from './components'
 import { filterByCategories, sortByVotesAndComments } from './utils'
 import { User } from '../../services/user.service'
 
@@ -95,8 +94,8 @@ export function MainPage({ user }: MainPageProps) {
             <Card
               key={feedback.id}
               feedback={feedback}
-              votes={groupedVotesByFeedbackId[feedback.id]}
-              comments={groupedCommentsByFeedbackId[feedback.id]}
+              votes={groupedVotesByFeedbackId[feedback.id]?.length || 0}
+              comments={groupedCommentsByFeedbackId[feedback.id]?.length || 0}
               handleToggleVote={() => handleToggleVote(feedback.id)}
               isVoted={Boolean(
                 groupedVotesByFeedbackId[feedback.id]?.find(
