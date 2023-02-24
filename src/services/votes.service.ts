@@ -27,3 +27,21 @@ export async function getAllVotesByFeedbackId(
     return []
   }
 }
+
+export async function toggleVote(feedbackId: number) {
+  try {
+    await axios.post(
+      `${BACKEND_API_URL}/api/votes/toggle`,
+      {
+        feedbackId,
+      },
+      {
+        headers: {
+          authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    )
+  } catch (error) {
+    console.error(error)
+  }
+}
