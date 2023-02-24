@@ -45,15 +45,3 @@ export async function toggleVote(feedbackId: number) {
     console.error(error)
   }
 }
-
-export async function deleteVote(id: number) {
-  try {
-    await axios.delete(`${BACKEND_API_URL}/api/votes/${id}`, {
-      headers: {
-        authorization: `Bearer ${getAccessToken()}`,
-      },
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
