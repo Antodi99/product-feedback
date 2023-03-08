@@ -64,3 +64,27 @@ export async function getFeedbackById(
     return undefined
   }
 }
+
+export async function addFeedback(
+  feedbackDetail: string,
+  feedbackTitle: string,
+  selectedCategory: string
+) {
+  try {
+    await axios.post(
+      `${BACKEND_API_URL}/api/feedback/`,
+      {
+        title: feedbackTitle,
+        body: feedbackDetail,
+        category: selectedCategory.toLowerCase(),
+      },
+      {
+        headers: {
+          authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    )
+  } catch (error) {
+    console.error(error)
+  }
+}
