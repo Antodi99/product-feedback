@@ -13,7 +13,7 @@ function AddFeedback() {
   const navigate = useNavigate()
 
   const handleAddFeedback = async () => {
-    addFeedback(feedbackDetail, feedbackTitle, selectedCategory)
+    await addFeedback(feedbackDetail, feedbackTitle, selectedCategory)
     navigate('/')
   }
 
