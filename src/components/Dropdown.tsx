@@ -60,7 +60,7 @@ export function Dropdown({
                   <div
                     className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-fuchsia-400'
                     onClick={() => {
-                      handleChange('category')(option.toLowerCase())
+                      handleChange('category')(option)
                       console.log(option.toLowerCase())
                     }}
                   >

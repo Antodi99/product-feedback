@@ -16,7 +16,7 @@ const addFeedbackSchema = Yup.object().shape({
     .max(1000, 'Description has to be less then 1000 characters')
     .required('Required'),
   category: Yup.string()
-    .oneOf(['ui', 'ux', 'enhancement', 'bug', 'feature'], 'Choose category!')
+    .oneOf(optionsCategory, 'Choose category!')
     .required('Required'),
 })
 
