@@ -1,10 +1,9 @@
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { Link, useNavigate } from 'react-router-dom'
-import { addFeedback } from '../services/feedback.service'
-import { Dropdown } from './Dropdown'
-
-const optionsCategory = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
+import { addFeedback } from '../../../../services/feedback.service'
+import { Dropdown } from '../../../../components/Dropdown'
+import { optionsCategory } from './constants'
 
 const addFeedbackSchema = Yup.object().shape({
   title: Yup.string()
@@ -20,24 +19,43 @@ const addFeedbackSchema = Yup.object().shape({
     .required('Required'),
 })
 
-function AddFeedback() {
+type FormValues = {
+  detail: string
+  title: string
+  category: string
+}
+
+const initialValues: FormValues = {
+  title: '',
+  detail: '',
+  category: optionsCategory[0],
+}
+
+export function AddFeedback() {
   const navigate = useNavigate()
 
-  const handleAddFeedback = async ({ detail, title, category }: any) => {
+  const handleAddFeedback = async ({ detail, title, category }: FormValues) => {
     await addFeedback(detail, title, category)
     navigate('/')
   }
 
   return (
     <Formik
-      initialValues={{ title: '', detail: '', category: 'Category' }}
+      initialValues={initialValues}
       onSubmit={(values) => {
         handleAddFeedback(values)
       }}
       validationSchema={addFeedbackSchema}
+      validateOnBlur
     >
-      {({ values, handleChange, handleSubmit, errors, touched }) => {
-        console.log(errors)
+      {({
+        values,
+        handleChange,
+        handleSubmit,
+        errors,
+        touched,
+        handleBlur,
+      }) => {
         return (
           <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
             <h1 className='text-dark-blue text-2xl font-bold'>
@@ -58,9 +76,10 @@ function AddFeedback() {
                 value={values.title}
                 id='title'
                 name='title'
+                onBlur={handleBlur}
               ></input>
               {errors.title && touched.title ? (
-                <div className='text-rose-500'>{errors.title}</div>
+                <div className='text-rose-500 mt-1'>{errors.title}</div>
               ) : null}
             </div>
             <div className='mt-8'>
@@ -97,6 +116,7 @@ function AddFeedback() {
                 value={values.detail}
                 name='detail'
                 id='detail'
+                onBlur={handleBlur}
               ></textarea>
               {errors.detail && touched.detail ? (
                 <div className='text-rose-500'>{errors.detail}</div>
@@ -121,5 +141,3 @@ function AddFeedback() {
     </Formik>
   )
 }
-
-export default AddFeedback

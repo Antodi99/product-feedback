@@ -59,10 +59,7 @@ export function Dropdown({
                 <Menu.Item key={idx}>
                   <div
                     className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-fuchsia-400'
-                    onClick={() => {
-                      handleChange('category')(option)
-                      console.log(option.toLowerCase())
-                    }}
+                    onClick={() => handleChange('category')(option)}
                   >
                     {option}
                     {selected === option && (
