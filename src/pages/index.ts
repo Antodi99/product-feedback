@@ -1,4 +1,4 @@
-export * from './AddFeedbackPage'
+export * from './add-feedback-page/AddFeedbackPage'
 export * from './EditFeedbackPage'
 export * from './FeedbackPage'
 export * from './LoginPage'

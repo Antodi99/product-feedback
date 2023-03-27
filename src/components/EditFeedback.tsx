@@ -5,8 +5,8 @@ const optionsStatus = ['Suggestion', 'Planned', 'In-Progress', 'Live']
 const optionsCategory = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
 export function EditFeedback() {
-  const [selectedCategory, setSelectedCategory] = useState('UI')
-  const [selectedStatus, setSelectedStatus] = useState('Suggestion')
+  const [selectedCategory] = useState('UI')
+  const [selectedStatus] = useState('Suggestion')
   return (
     <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
       <h1 className='text-dark-blue text-2xl font-bold'>
@@ -26,8 +26,12 @@ export function EditFeedback() {
         </p>
         <Dropdown
           selected={selectedCategory}
-          setSelected={setSelectedCategory}
           options={optionsCategory}
+          handleChange={function (): () => {} {
+            throw new Error('Function not implemented.')
+          }}
+          errors={undefined}
+          touched={undefined}
         />
       </div>
       <div className='mt-8'>
@@ -35,8 +39,12 @@ export function EditFeedback() {
         <p className='text-dark-blue text-sm'>Change feedback state</p>
         <Dropdown
           selected={selectedStatus}
-          setSelected={setSelectedStatus}
           options={optionsStatus}
+          handleChange={function (): () => {} {
+            throw new Error('Function not implemented.')
+          }}
+          errors={undefined}
+          touched={undefined}
         />
       </div>
       <div className='mt-8'>

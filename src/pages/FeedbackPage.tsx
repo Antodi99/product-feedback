@@ -84,19 +84,21 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
               isVoted={Boolean(usersVote)}
             ></Card>
 
-            {comments?.length &&
-              comments?.map((comment) => {
-                const user = users![comment.userId][0]
-                return (
-                  <Comment
-                    key={comment.id}
-                    name={user.name}
-                    userName={user.user_name}
-                    body={comment.body}
-                    avatar={user.avatar_url}
-                  ></Comment>
-                )
-              })}
+            {comments && comments?.length > 0
+              ? comments?.map((comment) => {
+                  const user = users![comment.userId][0]
+                  return (
+                    <Comment
+                      key={comment.id}
+                      name={user.name}
+                      userName={user.user_name}
+                      body={comment.body}
+                      avatar={user.avatar_url}
+                    ></Comment>
+                  )
+                })
+              : null}
+
             <AddComment
               id={String(feedback.id)}
               refreshComments={refreshComments}

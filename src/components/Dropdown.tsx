@@ -6,11 +6,19 @@ import { FaCheck } from 'react-icons/fa'
 
 type DropdownProps = {
   selected: string
-  setSelected: (selected: string) => void
+  handleChange: (field: string) => (option: string) => {}
   options: string[]
+  errors: string | undefined
+  touched: boolean | undefined
 }
 
-export function Dropdown({ selected, setSelected, options }: DropdownProps) {
+export function Dropdown({
+  selected,
+  handleChange,
+  options,
+  errors,
+  touched,
+}: DropdownProps) {
   return (
     <Menu
       as='div'
@@ -19,7 +27,13 @@ export function Dropdown({ selected, setSelected, options }: DropdownProps) {
       {({ open }) => (
         <>
           <div>
-            <Menu.Button className='-z-10 inline-flex w-full rounded-md px-4 py-2 font-medium text-light-blue hover:text-fuchsia-400 justify-between'>
+            <Menu.Button
+              className={
+                errors && touched
+                  ? '-z-10 inline-flex w-full rounded-md px-4 py-2 font-medium text-light-blue hover:text-fuchsia-400 justify-between border-rose-500 border-2 border-solid'
+                  : '-z-10 inline-flex w-full rounded-md px-4 py-2 font-medium text-light-blue hover:text-fuchsia-400 justify-between'
+              }
+            >
               {selected}
               <ChevronDownIcon
                 className={clsx(
@@ -45,7 +59,7 @@ export function Dropdown({ selected, setSelected, options }: DropdownProps) {
                 <Menu.Item key={idx}>
                   <div
                     className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-fuchsia-400'
-                    onClick={() => setSelected(option)}
+                    onClick={() => handleChange('category')(option)}
                   >
                     {option}
                     {selected === option && (

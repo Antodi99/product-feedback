@@ -1,5 +1,5 @@
 export * from './AddComment'
-export * from './AddFeedback'
+export * from '../pages/add-feedback-page/components/add-feedback-form/AddFeedbackForm'
 export * from './Card'
 export * from './CattegoryButton'
 export * from './Comment'
