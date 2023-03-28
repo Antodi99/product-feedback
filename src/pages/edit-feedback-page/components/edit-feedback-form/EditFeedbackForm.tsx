@@ -1,10 +1,10 @@
 import { Formik } from 'formik'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { fetchDataByFeedbackId } from '../../..'
 import {
   deleteFeedback,
   Feedback,
+  fetchDataByFeedbackId,
   updateFeedback,
 } from '../../../../services/feedback.service'
 import { Dropdown } from '../../../../components/Dropdown'
@@ -52,7 +52,7 @@ export function EditFeedback() {
     category,
   }: FormValues) => {
     await updateFeedback(Number(id), detail, title, status, category)
-    navigate('/')
+    navigate(`/feedback/${id}`)
   }
 
   if (isLoading)
@@ -92,7 +92,11 @@ export function EditFeedback() {
         return (
           <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
             <h1 className='text-dark-blue text-2xl font-bold'>
-              Editing &rsquo;Add Tags For Solutions&rsquo;
+              Editing &rsquo;
+              {values.title.length > 30
+                ? values.title.slice(0, 30) + '...'
+                : values.title}
+              &rsquo;
             </h1>
             <div className='mt-4'>
               <p className='text-dark-blue text-sm font-bold'>Feedback Title</p>

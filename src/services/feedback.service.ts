@@ -1,8 +1,8 @@
 import { getAccessToken } from './auth.service'
 import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
-import { Comment } from './comments.service'
-import { Vote } from './votes.service'
+import { Comment, getAllCommentsByFeedbackId } from './comments.service'
+import { getAllVotesByFeedbackId, Vote } from './votes.service'
 import toNumber from 'lodash/toNumber'
 
 export type FeedbackStatus = 'idea' | 'defined' | 'in-progress' | 'done'
@@ -126,4 +126,13 @@ export async function updateFeedback(
   } catch (error) {
     console.error(error)
   }
+}
+
+export async function fetchDataByFeedbackId(id?: string) {
+  const resp = await Promise.all([
+    getFeedbackById(id),
+    getAllCommentsByFeedbackId([Number(id)]),
+    getAllVotesByFeedbackId([Number(id)]),
+  ])
+  return resp
 }

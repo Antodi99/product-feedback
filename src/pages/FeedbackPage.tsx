@@ -3,7 +3,7 @@ import { groupBy } from 'lodash'
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
-import { Feedback, getFeedbackById } from '../services/feedback.service'
+import { Feedback, fetchDataByFeedbackId } from '../services/feedback.service'
 import {
   Comment as TComment,
   getAllCommentsByFeedbackId,
@@ -57,7 +57,7 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
   const usersVote = votes?.find((vote) => vote.userId === user?.id)
 
   return (
-    <div className='w-4/5 lg:w-4/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
+    <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
       <div className='flex justify-between items-center'>
         <Link to={'/'}>
           <div className='flex items-center hover:underline cursor-pointer'>
@@ -122,13 +122,4 @@ async function getUsersByComments(comments: TComment[]) {
 
   const user = await getAllUsersById([...userIds])
   return groupBy(user, 'id') as Record<string, User[]>
-}
-
-export async function fetchDataByFeedbackId(id?: string) {
-  const resp = await Promise.all([
-    getFeedbackById(id),
-    getAllCommentsByFeedbackId([Number(id)]),
-    getAllVotesByFeedbackId([Number(id)]),
-  ])
-  return resp
 }
