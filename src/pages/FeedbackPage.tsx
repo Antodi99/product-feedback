@@ -57,7 +57,7 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
   const usersVote = votes?.find((vote) => vote.userId === user?.id)
 
   return (
-    <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
+    <div className='w-4/5 lg:w-4/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
       <div className='flex justify-between items-center'>
         <Link to={'/'}>
           <div className='flex items-center hover:underline cursor-pointer'>
