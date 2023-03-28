@@ -5,11 +5,12 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import { FaCheck } from 'react-icons/fa'
 
 type DropdownProps = {
-  selected: string
+  selected: string | undefined
   handleChange: (field: string) => (option: string) => {}
   options: string[]
   errors: string | undefined
   touched: boolean | undefined
+  type: string
 }
 
 export function Dropdown({
@@ -18,6 +19,7 @@ export function Dropdown({
   options,
   errors,
   touched,
+  type,
 }: DropdownProps) {
   return (
     <Menu
@@ -59,7 +61,7 @@ export function Dropdown({
                 <Menu.Item key={idx}>
                   <div
                     className='flex justify-between items-center px-4 py-3 cursor-pointer text-base text-dark-blue hover:text-fuchsia-400'
-                    onClick={() => handleChange('category')(option)}
+                    onClick={() => handleChange(type)(option)}
                   >
                     {option}
                     {selected === option && (

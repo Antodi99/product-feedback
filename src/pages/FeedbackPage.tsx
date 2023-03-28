@@ -124,7 +124,7 @@ async function getUsersByComments(comments: TComment[]) {
   return groupBy(user, 'id') as Record<string, User[]>
 }
 
-async function fetchDataByFeedbackId(id?: string) {
+export async function fetchDataByFeedbackId(id?: string) {
   const resp = await Promise.all([
     getFeedbackById(id),
     getAllCommentsByFeedbackId([Number(id)]),

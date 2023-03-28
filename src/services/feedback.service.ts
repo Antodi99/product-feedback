@@ -88,3 +88,42 @@ export async function addFeedback(
     console.error(error)
   }
 }
+
+export async function deleteFeedback(feedbackId: number) {
+  try {
+    await axios.delete(`${BACKEND_API_URL}/api/feedback/${feedbackId}`, {
+      headers: {
+        authorization: `Bearer ${getAccessToken()}`,
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function updateFeedback(
+  feedbackId: number,
+  feedbackDetail: string,
+  feedbackTitle: string,
+  selectedStatus: string,
+  selectedCategory: string
+) {
+  try {
+    await axios.put(
+      `${BACKEND_API_URL}/api/feedback/${feedbackId}`,
+      {
+        title: feedbackTitle,
+        body: feedbackDetail,
+        category: selectedCategory.toLowerCase(),
+        status: selectedStatus.toLowerCase(),
+      },
+      {
+        headers: {
+          authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    )
+  } catch (error) {
+    console.error(error)
+  }
+}
