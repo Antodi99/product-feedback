@@ -1,5 +1,5 @@
 export * from './add-feedback-page/AddFeedbackPage'
-export * from './EditFeedbackPage'
+export * from './edit-feedback-page/EditFeedbackPage'
 export * from './FeedbackPage'
 export * from './LoginPage'
 export * from './main'

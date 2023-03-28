@@ -3,7 +3,7 @@ import { groupBy } from 'lodash'
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
-import { Feedback, getFeedbackById } from '../services/feedback.service'
+import { Feedback, fetchDataByFeedbackId } from '../services/feedback.service'
 import {
   Comment as TComment,
   getAllCommentsByFeedbackId,
@@ -122,13 +122,4 @@ async function getUsersByComments(comments: TComment[]) {
 
   const user = await getAllUsersById([...userIds])
   return groupBy(user, 'id') as Record<string, User[]>
-}
-
-async function fetchDataByFeedbackId(id?: string) {
-  const resp = await Promise.all([
-    getFeedbackById(id),
-    getAllCommentsByFeedbackId([Number(id)]),
-    getAllVotesByFeedbackId([Number(id)]),
-  ])
-  return resp
 }

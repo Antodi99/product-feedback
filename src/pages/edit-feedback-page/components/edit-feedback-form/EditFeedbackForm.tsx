@@ -1,37 +1,84 @@
 import { Formik } from 'formik'
-import { Link, useNavigate } from 'react-router-dom'
-import { addFeedback } from '../../../../services/feedback.service'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import {
+  deleteFeedback,
+  Feedback,
+  fetchDataByFeedbackId,
+  updateFeedback,
+} from '../../../../services/feedback.service'
 import { Dropdown } from '../../../../components/Dropdown'
-import { optionsCategory } from './constants'
-import { addFeedbackSchema } from './validation'
+import {
+  categoryMap,
+  optionsCategory,
+  optionsStatus,
+  statusMap,
+} from './constants'
+import { editFeedbackSchema } from './validation'
+import { ClipLoader } from 'react-spinners'
 
 type FormValues = {
+  id: number
   detail: string
   title: string
+  status: string
   category: string
 }
 
-const initialValues: FormValues = {
-  title: '',
-  detail: '',
-  category: optionsCategory[0],
-}
+export function EditFeedback() {
+  const [feedback, setFeedback] = useState<Feedback | undefined>()
+  const [isLoading, setIsLoading] = useState(true)
 
-export function AddFeedback() {
+  const { id } = useParams()
   const navigate = useNavigate()
 
-  const handleAddFeedback = async ({ detail, title, category }: FormValues) => {
-    await addFeedback(detail, title, category)
+  useEffect(() => {
+    fetchDataByFeedbackId(id).then(async (data) => {
+      setFeedback(data[0])
+      setIsLoading(false)
+    })
+  }, [])
+
+  const handleDeleteFeedback = async () => {
+    await deleteFeedback(Number(id))
     navigate('/')
+  }
+
+  const handleUpdateFeedback = async ({
+    id,
+    detail,
+    title,
+    status,
+    category,
+  }: FormValues) => {
+    await updateFeedback(Number(id), detail, title, status, category)
+    navigate(`/feedback/${id}`)
+  }
+
+  if (isLoading)
+    return (
+      <div className='flex justify-center items-center min-h-[70vh]'>
+        <ClipLoader color={'#D946EF'} loading={isLoading} size={150} />
+      </div>
+    )
+
+  if (!feedback) return <div>Feedback not found</div>
+
+  const initialValues: FormValues = {
+    title: feedback.title,
+    detail: feedback.body,
+    status: statusMap[feedback.status],
+    category: categoryMap[feedback.category],
+    id: feedback.id,
   }
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        handleAddFeedback(values)
+        handleUpdateFeedback(values)
       }}
-      validationSchema={addFeedbackSchema}
+      validationSchema={editFeedbackSchema}
       validateOnBlur
     >
       {({
@@ -45,7 +92,11 @@ export function AddFeedback() {
         return (
           <div className='bg-white flex flex-col rounded-lg p-6 h-fit w-full'>
             <h1 className='text-dark-blue text-2xl font-bold'>
-              Create New Feedback
+              Editing &rsquo;
+              {values.title.length > 30
+                ? values.title.slice(0, 30) + '...'
+                : values.title}
+              &rsquo;
             </h1>
             <div className='mt-4'>
               <p className='text-dark-blue text-sm font-bold'>Feedback Title</p>
@@ -81,9 +132,18 @@ export function AddFeedback() {
                 touched={touched.category}
                 type={'category'}
               />
-              {errors.category && touched.category ? (
-                <div className='text-rose-500'>{errors.category}</div>
-              ) : null}
+            </div>
+            <div className='mt-8'>
+              <p className='text-dark-blue text-sm font-bold'>Update Status</p>
+              <p className='text-dark-blue text-sm'>Change feedback state</p>
+              <Dropdown
+                selected={values.status}
+                handleChange={handleChange as any}
+                options={optionsStatus}
+                errors={errors.status}
+                touched={touched.status}
+                type={'status'}
+              />
             </div>
             <div className='mt-8'>
               <p className='text-dark-blue text-sm font-bold'>
@@ -101,25 +161,31 @@ export function AddFeedback() {
                 }
                 onChange={handleChange}
                 value={values.detail}
+                id='detai'
                 name='detail'
-                id='detail'
                 onBlur={handleBlur}
               ></textarea>
               {errors.detail && touched.detail ? (
                 <div className='text-rose-500'>{errors.detail}</div>
               ) : null}
             </div>
-            <div className='flex flex-col-reverse md:flex-row md:justify-end mt-10'>
-              <Link to={'/'}>
+            <div className='flex flex-col-reverse md:flex-row md:justify-between mt-10'>
+              <div
+                className='rounded-xl p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-red-900 w-content flex items-center justify-center hover:bg-red-400 cursor-pointer'
+                onClick={handleDeleteFeedback}
+              >
+                <p className='text-white font-bold text-sm'>Delete</p>
+              </div>
+              <div className='flex flex-col-reverse md:flex-row'>
                 <div className='rounded-xl p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
                   <p className='text-white font-bold text-sm'>Cancel</p>
                 </div>
-              </Link>
-              <div
-                className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'
-                onClick={() => handleSubmit()}
-              >
-                <p className='text-white font-bold text-sm'>Add Feedback</p>
+                <div
+                  className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'
+                  onClick={() => handleSubmit()}
+                >
+                  <p className='text-white font-bold text-sm'>Save Changes</p>
+                </div>
               </div>
             </div>
           </div>

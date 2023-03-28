@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { PacmanLoader } from 'react-spinners'
 import {
   AddFeedbackPage,
   EditFeedbackPage,
@@ -77,7 +78,12 @@ type AuthRequiredProps = {
 }
 
 function AuthRequired({ children, isLoggedIn, isLoading }: AuthRequiredProps) {
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading)
+    return (
+      <div className='flex justify-center items-center'>
+        <PacmanLoader color={'#D946EF'} loading={isLoading} size={150} />
+      </div>
+    )
   if (!isLoggedIn) return <Navigate to='/login' />
   return children as JSX.Element
 }

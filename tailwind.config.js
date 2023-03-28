@@ -19,6 +19,9 @@ module.exports = {
         'background-header':
           'url("./assets/images/suggestions/desktop/background-header.png")',
       },
+      minHeight: {
+        '7/10': '70vh',
+      },
     },
   },
   variants: {},

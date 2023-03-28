@@ -3,7 +3,7 @@ export * from '../pages/add-feedback-page/components/add-feedback-form/AddFeedba
 export * from './Card'
 export * from './CattegoryButton'
 export * from './Comment'
-export * from './EditFeedback'
+export * from '../pages/edit-feedback-page/components/edit-feedback-form/EditFeedbackForm'
 export * from './FeedBackCard'
 export * from './Header'
 export * from './HeaderBox'

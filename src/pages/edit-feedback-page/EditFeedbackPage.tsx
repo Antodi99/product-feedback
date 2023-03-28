@@ -1,6 +1,6 @@
 import { FaAngleLeft } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { EditFeedback } from '../components'
+import { EditFeedback } from './components'
 
 export function EditFeedbackPage() {
   return (

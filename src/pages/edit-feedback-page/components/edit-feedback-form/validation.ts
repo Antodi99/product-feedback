@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
-import { optionsCategory } from './constants'
+import { optionsCategory, optionsStatus } from './constants'
 
-export const addFeedbackSchema = Yup.object().shape({
+export const editFeedbackSchema = Yup.object().shape({
   title: Yup.string()
     .min(5, 'Title has to be more than 5 characters!')
     .max(50, 'Title has to be less than 50 characters')
@@ -9,6 +9,9 @@ export const addFeedbackSchema = Yup.object().shape({
   detail: Yup.string()
     .min(10, 'Description has to be more than 10 characters')
     .max(1000, 'Description has to be less than 1000 characters')
+    .required('Required'),
+  status: Yup.string()
+    .oneOf(optionsStatus, 'Choose status!')
     .required('Required'),
   category: Yup.string()
     .oneOf(optionsCategory, 'Choose category!')

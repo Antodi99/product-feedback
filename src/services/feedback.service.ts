@@ -1,8 +1,8 @@
 import { getAccessToken } from './auth.service'
 import axios from 'axios'
 import { BACKEND_API_URL } from '../config'
-import { Comment } from './comments.service'
-import { Vote } from './votes.service'
+import { Comment, getAllCommentsByFeedbackId } from './comments.service'
+import { getAllVotesByFeedbackId, Vote } from './votes.service'
 import toNumber from 'lodash/toNumber'
 
 export type FeedbackStatus = 'idea' | 'defined' | 'in-progress' | 'done'
@@ -87,4 +87,52 @@ export async function addFeedback(
   } catch (error) {
     console.error(error)
   }
+}
+
+export async function deleteFeedback(feedbackId: number) {
+  try {
+    await axios.delete(`${BACKEND_API_URL}/api/feedback/${feedbackId}`, {
+      headers: {
+        authorization: `Bearer ${getAccessToken()}`,
+      },
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function updateFeedback(
+  feedbackId: number,
+  feedbackDetail: string,
+  feedbackTitle: string,
+  selectedStatus: string,
+  selectedCategory: string
+) {
+  try {
+    await axios.put(
+      `${BACKEND_API_URL}/api/feedback/${feedbackId}`,
+      {
+        title: feedbackTitle,
+        body: feedbackDetail,
+        category: selectedCategory.toLowerCase(),
+        status: selectedStatus.toLowerCase(),
+      },
+      {
+        headers: {
+          authorization: `Bearer ${getAccessToken()}`,
+        },
+      }
+    )
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export async function fetchDataByFeedbackId(id?: string) {
+  const resp = await Promise.all([
+    getFeedbackById(id),
+    getAllCommentsByFeedbackId([Number(id)]),
+    getAllVotesByFeedbackId([Number(id)]),
+  ])
+  return resp
 }
