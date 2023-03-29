@@ -171,17 +171,20 @@ export function EditFeedback() {
             </div>
             <div className='flex flex-col-reverse md:flex-row md:justify-between mt-10'>
               <div
-                className='rounded-xl p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-red-900 w-content flex items-center justify-center hover:bg-red-400 cursor-pointer'
+                className='rounded-xl p-2 select-none md:p-3 mt-3 md:mt-0 md:px-6 bg-red-900 w-content flex items-center justify-center hover:bg-red-400 cursor-pointer'
                 onClick={handleDeleteFeedback}
               >
                 <p className='text-white font-bold text-sm'>Delete</p>
               </div>
               <div className='flex flex-col-reverse md:flex-row'>
-                <div className='rounded-xl p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
+                <div
+                  className='rounded-xl select-none p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'
+                  onClick={() => navigate(`/feedback/${id}`)}
+                >
                   <p className='text-white font-bold text-sm'>Cancel</p>
                 </div>
                 <div
-                  className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'
+                  className='rounded-xl select-none p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'
                   onClick={() => handleSubmit()}
                 >
                   <p className='text-white font-bold text-sm'>Save Changes</p>
