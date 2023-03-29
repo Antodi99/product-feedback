@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { groupBy } from 'lodash'
-import { Card, Header } from '../../components'
+import { Header } from '../../components'
 import ManageBar from '../../components/ManageBar'
 import NoFeedback from '../../components/NoFeedback'
 import {
@@ -15,6 +15,7 @@ import {
 } from '../../services/votes.service'
 import { filterByCategories, sortByVotesAndComments } from './utils'
 import { User } from '../../services/user.service'
+import { Card } from './components/Card'
 
 function getFeedbackIds(feedbackList: Feedback[]) {
   const feedbackIds: number[] = []
