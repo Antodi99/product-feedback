@@ -12,6 +12,6 @@ export const categoryMap: Record<string, string> = {
 export const statusMap: Record<string, string> = {
   idea: 'Idea',
   defined: 'Defined',
-  'in-progress': 'In-progress',
+  'in-progress': 'In-Progress',
   done: 'Done',
 }
