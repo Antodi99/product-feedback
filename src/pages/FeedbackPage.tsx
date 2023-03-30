@@ -19,29 +19,37 @@ type FeedbackPageProps = {
   user?: User
 }
 
+type CommentsWithUsers = {
+  comments: TComment[]
+  users: Record<number, User[]>
+}
+
 export function FeedbackPage({ user }: FeedbackPageProps) {
   const [feedback, setFeedback] = useState<Feedback | undefined>()
-  const [comments, setComments] = useState<TComment[] | undefined>()
   const [votes, setVotes] = useState<Vote[] | undefined>()
-  const [users, setUsers] = useState<Record<number, User[]> | undefined>()
+  const [{ comments, users }, setCommentsWithUsers] =
+    useState<CommentsWithUsers>({
+      comments: [],
+      users: {},
+    })
   const [isLoading, setIsLoading] = useState(true)
 
   const { id } = useParams()
 
   useEffect(() => {
-    fetchDataByFeedbackId(id).then(async (data) => {
-      const users = await getUsersByComments(data[1] || [])
-      setFeedback(data[0])
-      setComments(data[1])
-      setVotes(data[2])
-      setUsers(users)
+    fetchDataByFeedbackId(id).then(async ([feedback, comments, votes]) => {
+      const users = await getUsersByComments(comments)
+      setFeedback(feedback)
+      setVotes(votes)
+      setCommentsWithUsers({ comments, users })
       setIsLoading(false)
     })
   }, [])
 
   const refreshComments = async () => {
     const comments = await getAllCommentsByFeedbackId([Number(id)])
-    setComments(comments)
+    const users = await getUsersByComments(comments)
+    setCommentsWithUsers({ comments, users })
   }
 
   const refreshVotes = async () => {
@@ -84,7 +92,7 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
               isVoted={Boolean(usersVote)}
             ></Card>
 
-            {comments && comments?.length > 0
+            {comments?.length > 0
               ? comments?.map((comment) => {
                   const user = users![comment.userId][0]
                   return (
