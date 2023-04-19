@@ -10,9 +10,9 @@ type AddCommentProps = {
 const MAX_INPUT_LENGTH = 250
 
 const addCommentSchema = Yup.object().shape({
-  title: Yup.string()
-    .min(5, 'Title has to be more than 5 characters!')
-    .max(250, 'Title has to be less than 250 characters')
+  comment: Yup.string()
+    .min(5, 'Comment has to be more than 5 characters!')
+    .max(250, 'Comment has to be less than 250 characters')
     .required('Required'),
 })
 
