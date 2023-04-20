@@ -27,7 +27,7 @@ export function Comment({ name, userName, body, avatar }: CommentCard) {
           </button>
         </div>
         <div>
-          <p className='text-dark-blue text-xs md:text-base lg:text-lg mt-6'>
+          <p className='overflow-x-hidden text-dark-blue text-xs md:text-base lg:text-lg mt-6'>
             {body}
           </p>
         </div>
