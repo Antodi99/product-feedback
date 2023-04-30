@@ -23,6 +23,10 @@ module.exports = {
         '7/10': '70vh',
         40: '40px',
       },
+      minWidth: {
+        80: '20rem',
+        108: '27rem',
+      },
     },
   },
   variants: {},

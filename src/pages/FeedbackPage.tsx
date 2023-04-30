@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { groupBy } from 'lodash'
 import { FaAngleLeft } from 'react-icons/fa'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AddComment, Card, Comment } from '../components'
 import { Feedback, fetchDataByFeedbackId } from '../services/feedback.service'
 import {
@@ -64,16 +64,19 @@ export function FeedbackPage({ user }: FeedbackPageProps) {
 
   const usersVote = votes?.find((vote) => vote.userId === user?.id)
 
+  const navigate = useNavigate()
+
   return (
     <div className='w-4/5 lg:w-5/12 flex flex-col justify-center pt-7 md:pt-20 m-auto lg:px-12 pb-7'>
       <div className='flex justify-between items-center'>
-        <Link to={'/'}>
-          <div className='flex items-center hover:underline cursor-pointer'>
-            <FaAngleLeft className='text-light-blue' />
-            <p className='text-dark-blue font-bold text-sm ml-4'>Go Back</p>
-          </div>
-        </Link>
-        <Link to={`/feedback/${id}/edit`}>
+        <div
+          className='flex items-center hover:underline cursor-pointer'
+          onClick={() => navigate(-1)}
+        >
+          <FaAngleLeft className='text-light-blue' />
+          <p className='text-dark-blue font-bold text-sm ml-4'>Go Back</p>
+        </div>
+        <Link to={`/feedback/${id}/edit`} replace>
           <div className='rounded-xl p-2 md:px-6 bg-light-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'>
             <p className='text-white font-bold text-sm'>Edit Feedback</p>
           </div>

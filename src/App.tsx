@@ -44,7 +44,7 @@ const App = () => {
         path='/roadmap'
         element={
           <AuthRequired isLoading={isLoading} isLoggedIn={Boolean(user)}>
-            <RoadmapPage />
+            <RoadmapPage user={user} />
           </AuthRequired>
         }
       />
