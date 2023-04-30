@@ -38,7 +38,7 @@ export function FeedBackCard({
         onClick={handleToggleVote}
         className={`absolute cursor-pointer select-none flex mt-44 ml-10 order-2 w-16 h-8 ${voteColor} flex-wrap p-2 justify-between items-center rounded-lg`}
       >
-        <FaAngleUp className={`${voteFontColor}`} />
+        <FaAngleUp className={voteFontColor} />
         <p className={`${voteAngleColor} font-bold text-xs md:text-sm`}>
           {votes}
         </p>

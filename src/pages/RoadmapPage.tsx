@@ -29,16 +29,6 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
   const groupedCommentsByFeedbackId = groupBy(comments, 'feedbackId')
   const groupedFeedbacksByStatus = groupBy(feedbackList, 'status')
 
-  console.log(groupedFeedbacksByStatus)
-
-  function getFeedbackIds(feedbackList: Feedback[]) {
-    const feedbackIds: number[] = []
-    feedbackList.forEach((obj) => {
-      feedbackIds.push(obj.id)
-    })
-    return feedbackIds
-  }
-
   const refreshVotes = async () => {
     const feedbackIds = getFeedbackIds(feedbackList)
     const votes = await getAllVotesByFeedbackId(feedbackIds)
@@ -86,7 +76,7 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
         <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
-              Ideas ({groupedFeedbacksByStatus.idea?.length})
+              Ideas ({groupedFeedbacksByStatus.idea?.length || 0})
             </h1>
             <p className='text-dark-grey text-sm'>
               Ideas prioritized for research
@@ -118,7 +108,7 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
             <h1 className='font-bold text-dark-blue text-lg'>
               Defined ({groupedFeedbacksByStatus.defined?.length || 0})
             </h1>
-            <p className='text-dark-grey text-sm'>Released features</p>
+            <p className='text-dark-grey text-sm'>Defined features</p>
           </div>
           <div className='flex md:flex-col flex-row overflow-y-auto w-full md:h-[32rem]'>
             {groupedFeedbacksByStatus.defined?.length > 0 &&
@@ -144,7 +134,8 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
         <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
-              In-Progress ({groupedFeedbacksByStatus['in-progress']?.length})
+              In-Progress (
+              {groupedFeedbacksByStatus['in-progress']?.length || 0})
             </h1>
             <p className='text-dark-grey text-sm'>Currently being developed</p>
           </div>
@@ -172,7 +163,7 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
         <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
-              Done ({groupedFeedbacksByStatus.done?.length})
+              Done ({groupedFeedbacksByStatus.done?.length || 0})
             </h1>
             <p className='text-dark-grey text-sm'>Released features</p>
           </div>
@@ -200,4 +191,12 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
       </main>
     </div>
   )
+}
+
+function getFeedbackIds(feedbackList: Feedback[]) {
+  const feedbackIds: number[] = []
+  feedbackList.forEach((obj) => {
+    feedbackIds.push(obj.id)
+  })
+  return feedbackIds
 }
