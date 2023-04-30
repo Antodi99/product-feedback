@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { FaAngleUp, FaComment } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Feedback, FeedbackStatus } from '../services/feedback.service'
 import { Category } from './Header'
 
@@ -32,8 +32,6 @@ export function FeedBackCard({
   const voteFontColor = isVoted ? 'text-white' : 'text-light-blue'
   const voteAngleColor = isVoted ? 'text-white' : 'text-dark-blue'
 
-  const navigate = useNavigate()
-
   return (
     <div className='relative'>
       <div
@@ -45,10 +43,7 @@ export function FeedBackCard({
           {votes}
         </p>
       </div>
-      <div
-        className='bg-white flex flex-col rounded-lg justify-between h-52 w-96 my-4 ml-4 min-w-[20rem] hover:cursor-pointer'
-        onClick={() => navigate(`/feedback/${feedback.id}`)}
-      >
+      <div className='bg-white flex flex-col rounded-lg justify-between h-52 w-96 my-4 ml-4 min-w-[20rem] hover:cursor-pointer'>
         <Link
           to={`/feedback/${feedback.id}`}
           className='w-full flex order-1 h-full'

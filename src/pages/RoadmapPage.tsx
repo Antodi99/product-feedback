@@ -83,7 +83,7 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
         </Link>
       </div>
       <main className='flex md:flex-row md:overflow-auto flex-col'>
-        <div className='w-full flex flex-col'>
+        <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
               Ideas ({groupedFeedbacksByStatus.idea?.length})
@@ -113,10 +113,10 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
               ))}
           </div>
         </div>
-        <div className='w-full flex flex-col'>
+        <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
-              Defined ({groupedFeedbacksByStatus.defined?.length})
+              Defined ({groupedFeedbacksByStatus.defined?.length || 0})
             </h1>
             <p className='text-dark-grey text-sm'>Released features</p>
           </div>
@@ -141,7 +141,7 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
               ))}
           </div>
         </div>
-        <div className='w-full flex flex-col'>
+        <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
               In-Progress ({groupedFeedbacksByStatus['in-progress']?.length})
@@ -169,7 +169,7 @@ export function RoadmapPage({ user }: RoadmapPageProps) {
               ))}
           </div>
         </div>
-        <div className='w-full flex flex-col'>
+        <div className='w-full min-w-[27rem] flex flex-col'>
           <div className='my-8 mx-4'>
             <h1 className='font-bold text-dark-blue text-lg'>
               Done ({groupedFeedbacksByStatus.done?.length})
