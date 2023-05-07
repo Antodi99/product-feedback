@@ -1,6 +1,6 @@
 import { Formik } from 'formik'
 import * as Yup from 'yup'
-import { createComment } from '../services/comments.service'
+import { createComment } from '../../services/comments.service'
 
 type AddCommentProps = {
   id: string
@@ -9,6 +9,7 @@ type AddCommentProps = {
 
 const MAX_INPUT_LENGTH = 250
 
+// Validation
 const addCommentSchema = Yup.object().shape({
   comment: Yup.string()
     .min(5, 'Comment has to be more than 5 characters!')
@@ -53,6 +54,7 @@ export function AddComment({ id, refreshComments }: AddCommentProps) {
               value={values.comment}
               id='comment'
               name='comment'
+              data-testid='comment'
               onBlur={handleBlur}
             ></textarea>
             {errors.comment && touched.comment ? (
