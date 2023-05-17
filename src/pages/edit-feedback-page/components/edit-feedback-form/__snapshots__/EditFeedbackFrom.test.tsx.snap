@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditFeedback renders properly 1`] = `
+<div>
+  <div
+    class="flex justify-center items-center min-h-[70vh]"
+  >
+    <span
+      style="width: 150px; height: 150px; border-radius: 100%; border: 2px solid; border-top-color: #D946EF; border-bottom-color: transparent; border-left-color: #D946EF; border-right-color: #D946EF; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+    />
+  </div>
+</div>
+`;

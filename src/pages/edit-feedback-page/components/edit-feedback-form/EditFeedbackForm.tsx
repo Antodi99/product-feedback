@@ -25,11 +25,14 @@ type FormValues = {
   category: string
 }
 
+// TODO
+
 export function EditFeedback() {
   const [feedback, setFeedback] = useState<Feedback | undefined>()
   const [isLoading, setIsLoading] = useState(true)
 
   const { id } = useParams()
+  console.log('ID TEST', id)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -113,6 +116,7 @@ export function EditFeedback() {
                 value={values.title}
                 id='title'
                 name='title'
+                data-testid='title'
                 onBlur={handleBlur}
               ></input>
               {errors.title && touched.title ? (
@@ -131,6 +135,7 @@ export function EditFeedback() {
                 errors={errors.category}
                 touched={touched.category}
                 type={'category'}
+                data-testid='category'
               />
             </div>
             <div className='mt-8'>
@@ -143,6 +148,7 @@ export function EditFeedback() {
                 errors={errors.status}
                 touched={touched.status}
                 type={'status'}
+                data-testid='status'
               />
             </div>
             <div className='mt-8'>
@@ -161,8 +167,9 @@ export function EditFeedback() {
                 }
                 onChange={handleChange}
                 value={values.detail}
-                id='detai'
+                id='detail'
                 name='detail'
+                data-testid='detail'
                 onBlur={handleBlur}
               ></textarea>
               {errors.detail && touched.detail ? (

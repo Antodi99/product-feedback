@@ -7,6 +7,8 @@ export function LoginPage() {
   const accessToken = searchParams.get('access_token')
   const refreshToken = searchParams.get('refresh_token')
 
+  // TODO(not now)
+
   if (accessToken && refreshToken) {
     setAccessToken(accessToken)
     setRefreshToken(refreshToken)
