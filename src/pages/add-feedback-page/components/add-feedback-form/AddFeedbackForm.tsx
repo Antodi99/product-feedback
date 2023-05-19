@@ -64,6 +64,7 @@ export function AddFeedback() {
                 value={values.title}
                 id='title'
                 name='title'
+                data-testid='title'
                 onBlur={handleBlur}
               ></input>
               {errors.title && touched.title ? (
@@ -105,6 +106,7 @@ export function AddFeedback() {
                 value={values.detail}
                 name='detail'
                 id='detail'
+                data-testid='detail'
                 onBlur={handleBlur}
               ></textarea>
               {errors.detail && touched.detail ? (
@@ -120,6 +122,7 @@ export function AddFeedback() {
               <div
                 className='rounded-xl p-2 md:p-3 bg-fuchsia-500 w-content md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer'
                 onClick={() => handleSubmit()}
+                data-testid='addFeedback'
               >
                 <p className='text-white font-bold text-sm'>Add Feedback</p>
               </div>
