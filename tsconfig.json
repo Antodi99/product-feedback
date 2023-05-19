@@ -17,5 +17,6 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
+    "rootDir": "./"
   },
 }

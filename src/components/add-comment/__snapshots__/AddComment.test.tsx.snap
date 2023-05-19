@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddComment renders properly 1`] = `
+<div>
+  <div
+    class="bg-white flex flex-col rounded-lg p-6 h-fit w-full mt-4"
+  >
+    <p
+      class="text-dark-blue text-lg font-bold"
+    >
+      Add Comment
+    </p>
+    <textarea
+      class="bg-light-grey p-2 resize-none w-full outline-none rounded-lg mt-4 h-auto min-h-[9rem] text-sm text-dark-blue"
+      data-testid="comment"
+      id="comment"
+      name="comment"
+      placeholder="Type your comment here"
+    />
+    <div
+      class="flex justify-between mt-4 items-center text-dark-blue text-sm"
+    >
+      <p>
+        250
+         Characters left
+      </p>
+      <div
+        class="rounded-xl p-3 bg-fuchsia-500 w-fit md:ml-3 flex items-center justify-center hover:bg-fuchsia-400 cursor-pointer"
+      >
+        <p
+          class="text-white font-bold text-xs"
+        >
+          Post Comment
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

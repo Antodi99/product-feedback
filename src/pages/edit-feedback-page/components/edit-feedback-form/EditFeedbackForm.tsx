@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import {
   deleteFeedback,
   Feedback,
-  fetchDataByFeedbackId,
+  getFeedbackById,
   updateFeedback,
 } from '../../../../services/feedback.service'
 import { Dropdown } from '../../../../components/Dropdown'
@@ -33,8 +33,8 @@ export function EditFeedback() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetchDataByFeedbackId(id).then(async (data) => {
-      setFeedback(data[0])
+    getFeedbackById(id).then(async (data) => {
+      setFeedback(data)
       setIsLoading(false)
     })
   }, [])
@@ -113,6 +113,7 @@ export function EditFeedback() {
                 value={values.title}
                 id='title'
                 name='title'
+                data-testid='title'
                 onBlur={handleBlur}
               ></input>
               {errors.title && touched.title ? (
@@ -143,6 +144,7 @@ export function EditFeedback() {
                 errors={errors.status}
                 touched={touched.status}
                 type={'status'}
+                data-testid='status'
               />
             </div>
             <div className='mt-8'>
@@ -161,8 +163,9 @@ export function EditFeedback() {
                 }
                 onChange={handleChange}
                 value={values.detail}
-                id='detai'
+                id='detail'
                 name='detail'
+                data-testid='detail'
                 onBlur={handleBlur}
               ></textarea>
               {errors.detail && touched.detail ? (
@@ -173,6 +176,7 @@ export function EditFeedback() {
               <div
                 className='rounded-xl p-2 select-none md:p-3 mt-3 md:mt-0 md:px-6 bg-red-900 w-content flex items-center justify-center hover:bg-red-400 cursor-pointer'
                 onClick={handleDeleteFeedback}
+                data-testid='delete'
               >
                 <p className='text-white font-bold text-sm'>Delete</p>
               </div>
@@ -180,6 +184,7 @@ export function EditFeedback() {
                 <div
                   className='rounded-xl select-none p-2 md:p-3 mt-3 md:mt-0 md:px-6 bg-dark-blue w-content flex items-center justify-center hover:bg-light-blue cursor-pointer'
                   onClick={() => navigate(`/feedback/${id}`)}
+                  data-testid='cancel'
                 >
                   <p className='text-white font-bold text-sm'>Cancel</p>
                 </div>

@@ -1,4 +1,4 @@
-export * from './AddComment'
+export * from './add-comment/AddComment'
 export * from '../pages/add-feedback-page/components/add-feedback-form/AddFeedbackForm'
 export * from './Card'
 export * from './CattegoryButton'

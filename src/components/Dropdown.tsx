@@ -35,6 +35,7 @@ export function Dropdown({
                   ? '-z-10 inline-flex w-full rounded-md px-4 py-2 font-medium text-light-blue hover:text-fuchsia-400 justify-between border-rose-500 border-2 border-solid'
                   : '-z-10 inline-flex w-full rounded-md px-4 py-2 font-medium text-light-blue hover:text-fuchsia-400 justify-between'
               }
+              data-testid={type}
             >
               {selected}
               <ChevronDownIcon
