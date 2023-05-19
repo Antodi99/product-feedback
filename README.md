@@ -40,6 +40,7 @@ npm run down
 - [x] Upvote, downvote feedback
 - [x] Authentication with GitHub & JWT
 - [x] Add unit-tests
+- [ ] Deploy to Netlify
 
 ## Links
 
