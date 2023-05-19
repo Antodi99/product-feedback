@@ -17,8 +17,6 @@ const initialValues: FormValues = {
   category: optionsCategory[0],
 }
 
-// TODO
-
 export function AddFeedback() {
   const navigate = useNavigate()
 

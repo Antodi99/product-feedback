@@ -24,8 +24,6 @@ type CommentsWithUsers = {
   users: Record<number, User[]>
 }
 
-// TODO
-
 export function FeedbackPage({ user }: FeedbackPageProps) {
   const [feedback, setFeedback] = useState<Feedback | undefined>()
   const [votes, setVotes] = useState<Vote[] | undefined>()
