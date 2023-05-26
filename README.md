@@ -42,6 +42,7 @@ npm run down
 - [x] Upvote, downvote feedback
 - [x] Authentication with GitHub & JWT
 - [x] Add unit-tests
+- [x] Filter feedback by votes, comments, category 
 - [ ] Deploy to Netlify
 
 ## Links
